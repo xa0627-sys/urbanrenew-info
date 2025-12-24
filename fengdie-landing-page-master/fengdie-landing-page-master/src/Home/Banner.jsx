@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import QueueAnim from 'rc-queue-anim';
-import { Button } from 'antd';
 import BannerImage from './BannerImage';
 
 class Banner extends React.PureComponent {
@@ -20,17 +19,6 @@ class Banner extends React.PureComponent {
             <h1 key="h2">
               東湖4-7都市更新簡單聊
             </h1>
-            <p key="p">为您提供专业的云上建站服务，满足不同行业的个性化需求</p>
-            <span key="button">
-              <Button
-                type="primary"
-                onClick={() => {
-                window.location.href = '/activity/home';
-              }}
-              >
-                开始使用
-              </Button>
-            </span>
           </QueueAnim>
           <div className={`${className}-image-wrapper`}>
             <BannerImage />
