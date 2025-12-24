@@ -4,19 +4,55 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import { Row, Col } from 'antd';
 import { page1 } from './data';
 
-export default function Page1() {
-  const children = page1.map((d, i) => (
-    <QueueAnim
-      component={Col}
-      key={i}
-      type="bottom"
-      className="col"
-      componentProps={{ span: 8 }}
-    >
-      <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
-      <h3 key="h3">{d.title}</h3>
-    </QueueAnim>
-  ));
+export default function Page1({ onSelect }) {
+  const children = page1.map((d, i) => {
+    const isClickable = Boolean(d.id && onSelect);
+    const handleSelect = () => {
+      if (d.id && onSelect) {
+        onSelect(d.id);
+      }
+    };
+    const handleKeyDown = (event) => {
+      if (!isClickable) {
+        return;
+      }
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        handleSelect();
+      }
+    };
+    const content = (
+      <React.Fragment>
+        <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
+        <h3 key="h3">{d.title}</h3>
+      </React.Fragment>
+    );
+    return (
+      <QueueAnim
+        component={Col}
+        key={i}
+        type="bottom"
+        className="col"
+        componentProps={{ span: 8 }}
+      >
+        {isClickable ? (
+          <button
+            key="button"
+            className="home-func-card"
+            type="button"
+            onClick={handleSelect}
+            onKeyDown={handleKeyDown}
+          >
+            {content}
+          </button>
+        ) : (
+          <div key="static" className="home-func-card static">
+            {content}
+          </div>
+        )}
+      </QueueAnim>
+    );
+  });
   return (
     <div className="home-layout-wrapper home-func-wrapper" id="home-func" >
       <h2>你該知道的都更觀念</h2>
