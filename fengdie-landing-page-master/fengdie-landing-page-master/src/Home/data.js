@@ -9,13 +9,32 @@ export const page1 = [
   {
     title: '自主都市更新權利變換估價',
     content: '网站内设有数据监测埋点，助你时刻掌握站点效果，鉴别有效渠道',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/ONvKhpRAmkCfdEhkUZkJ.png',
+    src: '1.png',
+    href: '#valuation',
   },
   {
     title: '更新後房屋選配原則',
     content: '企业版支持以团队管理的方式，多人协作完成营销站点，共享资源',
     src: 'https://gw.alipayobjects.com/zos/rmsportal/oxmXLgGjCeXfYPcVSbKg.png',
   },
+];
+
+export const valuationImages = [
+  { src: '1.png', label: '1' },
+  { src: '2.png', label: '2' },
+  { src: '3.png', label: '3' },
+  { src: '4.png', label: '4' },
+  { src: '5.png', label: '5' },
+  { src: '6.png', label: '6' },
+  { src: '7.png', label: '7' },
+  { src: '8.png', label: '8' },
+  { src: '9.png', label: '9' },
+  { src: '10.png', label: '10' },
+  { src: '11.png', label: '11' },
+  { src: '12.png', label: '12' },
+  { src: '13.png', label: '13' },
+  { src: '14.png', label: '14' },
+  { src: '15.png', label: '15' },
 ];
 
 export const page2 = [

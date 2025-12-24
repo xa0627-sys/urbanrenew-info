@@ -121,6 +121,10 @@
   .home-func-wrapper {
     height: 720px;
     text-align: center;
+    .home-func-card {
+      display: block;
+      color: inherit;
+    }
     .image {
       height: 240px;
       position: relative;
@@ -135,6 +139,55 @@
     p {
       font-size: 16px;
       color: @contentColor;
+    }
+  }
+  .home-valuation-wrapper {
+    height: auto;
+    padding-bottom: 96px;
+    .home-valuation-header {
+      width: 100%;
+    }
+    .home-valuation-note {
+      margin-top: -40px;
+      margin-bottom: 40px;
+      font-size: 16px;
+      color: @contentColor;
+    }
+    .home-valuation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .valuation-card {
+      display: block;
+      text-align: left;
+      text-decoration: none;
+      color: inherit;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #f0f0f0;
+      overflow: hidden;
+      box-shadow: 0 6px 18px fade(#000, 6);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: zoom-in;
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 28px fade(#000, 12);
+      }
+    }
+    .valuation-image {
+      background: #f7f7f7;
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+    .valuation-caption {
+      display: block;
+      padding: 12px 16px 16px;
+      font-size: 16px;
+      color: @titleColor;
     }
   }
   .home-hover {
@@ -243,6 +296,36 @@
         background-repeat: no-repeat;
         background-position: center;
         margin: auto;
+      }
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .home-layout-wrapper {
+      height: auto;
+    }
+    .home-layout {
+      width: 100%;
+      padding: 0 16px;
+    }
+    .home-func-wrapper {
+      height: auto;
+      .col {
+        height: auto;
+        margin-bottom: 32px;
+      }
+      .image {
+        margin-bottom: 32px;
+      }
+    }
+    .home-valuation-wrapper {
+      padding-bottom: 64px;
+      .home-valuation-note {
+        margin-top: -32px;
+        margin-bottom: 32px;
+      }
+      .home-valuation-grid {
+        grid-template-columns: 1fr;
       }
     }
   }
