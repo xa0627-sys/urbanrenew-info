@@ -6,9 +6,8 @@ export default function Header(props) {
       <div className="header-content">
         <h1>
           <a>
-            <span>凤蝶</span>
+            <span>東湖4-7都市更新簡單聊</span>
           </a>
-          <span>移动建站平台</span>
         </h1>
       </div>
     </header>
