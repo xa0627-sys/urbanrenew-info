@@ -15,12 +15,11 @@ export default function Page1() {
     >
       <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
       <h3 key="h3">{d.title}</h3>
-      <p key="p">{d.content}</p>
     </QueueAnim>
   ));
   return (
     <div className="home-layout-wrapper home-func-wrapper" id="home-func" >
-      <h2>功能介绍</h2>
+      <h2>你該知道的都更觀念</h2>
       <i className="line" />
       <OverPack className="home-layout" location="home-func" playScale={0.4}>
         <QueueAnim className="home-func" type="bottom" key="home-func" ease="easeOutQuart" leaveReverse>
