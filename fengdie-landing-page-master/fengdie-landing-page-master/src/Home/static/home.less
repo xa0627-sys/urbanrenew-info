@@ -121,6 +121,21 @@
   .home-func-wrapper {
     height: 720px;
     text-align: center;
+    .home-func-card {
+      background: transparent;
+      border: 0;
+      padding: 0;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+    }
+    .home-func-card:focus {
+      outline: 2px solid #FFBF00;
+      outline-offset: 6px;
+    }
+    .home-func-card.static {
+      cursor: default;
+    }
     .image {
       height: 240px;
       position: relative;
@@ -135,6 +150,70 @@
     p {
       font-size: 16px;
       color: @contentColor;
+    }
+  }
+  .valuation-page {
+    padding: 72px 24px 120px;
+    text-align: center;
+    .valuation-header {
+      max-width: 960px;
+      margin: 0 auto 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .valuation-header a {
+      display: block;
+      width: 100%;
+      cursor: zoom-in;
+    }
+    .valuation-header img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px fade(#000, 12);
+    }
+    .valuation-hint {
+      font-size: 16px;
+      color: @contentColor;
+      margin: 0;
+    }
+    .valuation-back {
+      align-self: flex-start;
+      border-radius: 999px;
+      border: 1px solid fade(#000, 20);
+      background: #fff;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      color: @titleColor;
+    }
+    .valuation-back:hover {
+      border-color: #FFBF00;
+    }
+    .valuation-gallery {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .valuation-card {
+      margin: 0;
+    }
+    .valuation-card a {
+      display: block;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: zoom-in;
+      box-shadow: 0 8px 24px fade(#000, 10);
+      background: #fff;
+    }
+    .valuation-card img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
   }
   .home-hover {
