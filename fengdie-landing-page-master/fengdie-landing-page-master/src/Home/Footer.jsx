@@ -6,7 +6,7 @@ function Footer() {
     <div className="home-layout-wrapper home-footer-wrapper">
       <div className="home-layout">
         <div className="logo" key="logo">
-          <img src={"/f-logo.png"} width="72" height="72" alt="logo" />
+          <img src={"assets/images/f-logo.png"} width="72" height="72" alt="logo" />
         </div>
         <div className="footer-info">
           <p>106 台北市大安區和平東路一段59號4樓</p>
