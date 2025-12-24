@@ -25,7 +25,7 @@ export default function Page2() {
     <div className="home-layout-wrapper home-case-wrapper">
       <OverPack className="home-layout" playScale={0.4}>
         <QueueAnim className="home-case" type="bottom" key="home-case" ease="easeOutQuart" leaveReverse>
-          <h2 key="h2">精品案例扫一扫</h2>
+          <h2 key="h2">平面圖說參考</h2>
           <i key="i" className="line" />
           <QueueAnim
             key="content"
