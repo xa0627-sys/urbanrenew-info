@@ -13,8 +13,17 @@ export default function Page1() {
       className="col"
       componentProps={{ span: 8 }}
     >
-      <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
-      <h3 key="h3">{d.title}</h3>
+      {d.link ? (
+        <a className="home-func-link home-func-card" href={d.link}>
+          <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
+          <h3 key="h3">{d.title}</h3>
+        </a>
+      ) : (
+        <div className="home-func-card">
+          <div key="image" className="image" style={{ backgroundImage: `url(${d.src})` }} />
+          <h3 key="h3">{d.title}</h3>
+        </div>
+      )}
     </QueueAnim>
   ));
   return (

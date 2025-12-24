@@ -1,0 +1,107 @@
+:root {
+  color-scheme: light;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  background-color: #f5f5f5;
+  color: #1f1f1f;
+}
+
+body {
+  margin: 0;
+}
+
+.valuation-page {
+  background-color: #f5f5f5;
+}
+
+.valuation-hero {
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 32px 0 24px;
+}
+
+.valuation-container {
+  width: min(100% - 32px, 1000px);
+  margin: 0 auto;
+}
+
+.valuation-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #4a4a4a;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.valuation-back:hover {
+  color: #1f1f1f;
+}
+
+.valuation-hero h1 {
+  margin: 12px 0 8px;
+  font-size: clamp(24px, 3.2vw, 32px);
+  font-weight: 600;
+}
+
+.valuation-hero p {
+  margin: 0;
+  color: #5a5a5a;
+  font-size: clamp(14px, 2.2vw, 16px);
+}
+
+.valuation-list {
+  list-style: none;
+  padding: 32px 0 48px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.valuation-item {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.valuation-item figure {
+  margin: 0;
+}
+
+.valuation-item a {
+  display: block;
+}
+
+.valuation-item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.valuation-item figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #6a6a6a;
+  text-align: right;
+}
+
+@media (max-width: 640px) {
+  .valuation-hero {
+    padding: 24px 0 20px;
+  }
+
+  .valuation-list {
+    gap: 20px;
+  }
+
+  .valuation-item {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .valuation-item img {
+    border-radius: 10px;
+  }
+}
