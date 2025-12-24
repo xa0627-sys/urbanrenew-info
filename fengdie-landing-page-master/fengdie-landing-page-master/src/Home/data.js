@@ -234,7 +234,7 @@ export const page3 = [
 export const page4 = [
   'https://gw.alipayobjects.com/zos/rmsportal/kJPmZttedahfIvsZDGTd.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/ktLOdfjNyExgKyWjiCvm.svg',
-  'https://gw.alipayobjects.com/zos/rmsportal/gNNxbrNqlHdnRuMjUXrL.svg',
+    'https://gw.alipayobjects.com/zos/rmsportal/alfasafe-logo.svg', // Alfa Safe logo
   'https://gw.alipayobjects.com/zos/rmsportal/qWaneWxxMVpASpiCOcsT.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/kyCpvqWFloOpAOqzOlBg.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/bBzJNEnPvyhNUhyHipvO.svg',
