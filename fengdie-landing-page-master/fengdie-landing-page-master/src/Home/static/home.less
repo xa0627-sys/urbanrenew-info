@@ -326,3 +326,66 @@
     }
   }
 }
+
+/* 聖誕風主題和手機響應式改進 */
+
+/* 聖誕背景和主題顏色 */
+.home-page {
+  background: linear-gradient(135deg, #c41e3a 0%, #165b33 50%, #ffd700 100%);
+  position: relative;
+}
+
+/* 聖誕裝飾動畫 */
+@keyframes snowfall {
+  0% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* 手機視圖改進 - 增大文字和圖片尺寸 */
+@media (max-width: 768px) {
+  /* 標題文字放大 */
+  h1, h2, h3 {
+    font-size: 1.2em !important;
+  }
+  
+  /* 選項卡容器改進 */
+  .fd-content {
+    padding: 20px !important;
+  }
+  
+  /* 選項卡文字放大 */
+  .fd-content h3, 
+  .fd-content p {
+    font-size: 1.1em !important;
+    line-height: 1.6 !important;
+  }
+  
+  /* 圖片尺寸優化 */
+  .fd-content img {
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 15px 0 !important;
+  }
+  
+  /* 增加容器寬度和內邊距 */
+  .home-page .row > div {
+    padding: 15px !important;
+  }
+}
+
+/* 平板視圖改進 */
+@media (max-width: 1024px) and (min-width: 768px) {
+  .fd-content h3 {
+    font-size: 1.15em !important;
+  }
+  
+  .fd-content img {
+    max-width: 90% !important;
+  }
+}
