@@ -9,7 +9,8 @@ export const page1 = [
   {
     title: '自主都市更新權利變換估價',
     content: '网站内设有数据监测埋点，助你时刻掌握站点效果，鉴别有效渠道',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/ONvKhpRAmkCfdEhkUZkJ.png',
+    src: '1.png',
+    id: 'valuation',
   },
   {
     title: '更新後房屋選配原則',
