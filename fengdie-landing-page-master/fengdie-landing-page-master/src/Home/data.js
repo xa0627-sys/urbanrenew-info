@@ -9,7 +9,8 @@ export const page1 = [
   {
     title: '自主都市更新權利變換估價',
     content: '网站内设有数据监测埋点，助你时刻掌握站点效果，鉴别有效渠道',
-    src: 'https://gw.alipayobjects.com/zos/rmsportal/ONvKhpRAmkCfdEhkUZkJ.png',
+    src: 'assets/images/1.png',
+    id: 'valuation',
   },
   {
     title: '更新後房屋選配原則',
@@ -234,7 +235,7 @@ export const page3 = [
 export const page4 = [
   'https://gw.alipayobjects.com/zos/rmsportal/kJPmZttedahfIvsZDGTd.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/ktLOdfjNyExgKyWjiCvm.svg',
-    './f-logo.png', // Alfa Safe logo
+    'assets/images/f-logo.png', // Alfa Safe logo
   'https://gw.alipayobjects.com/zos/rmsportal/qWaneWxxMVpASpiCOcsT.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/kyCpvqWFloOpAOqzOlBg.svg',
   'https://gw.alipayobjects.com/zos/rmsportal/bBzJNEnPvyhNUhyHipvO.svg',
