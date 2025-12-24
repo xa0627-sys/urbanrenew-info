@@ -1,6 +1,6 @@
 import React from 'react';
 
-const valuationImages = Array.from({ length: 15 }, (_, index) => `${index + 1}.png`);
+const valuationImages = Array.from({ length: 15 }, (_, index) => `assets/images/${index + 1}.png`);
 
 export default function ValuationPage({ onBack }) {
   const headerImage = valuationImages[0];
