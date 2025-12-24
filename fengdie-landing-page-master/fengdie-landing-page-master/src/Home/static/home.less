@@ -136,6 +136,19 @@
       font-size: 16px;
       color: @contentColor;
     }
+    .home-func-card {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+    .home-func-link {
+      cursor: pointer;
+      transition: color 0.3s ease;
+      &:hover,
+      &:focus {
+        color: @titleColor;
+      }
+    }
   }
   .home-hover {
     border: 1px solid #E9E9E9;
@@ -243,6 +256,93 @@
         background-repeat: no-repeat;
         background-position: center;
         margin: auto;
+      }
+    }
+  }
+  .home-valuation-wrapper {
+    height: auto;
+    padding-bottom: 96px;
+    .home-layout {
+      padding: 0 24px 32px;
+      height: auto;
+    }
+    h2 {
+      margin-top: 88px;
+    }
+    .valuation-note {
+      margin: 0 auto 32px;
+      font-size: 16px;
+      color: @contentColor;
+    }
+    .valuation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .valuation-card {
+      margin: 0;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px solid #E9E9E9;
+      background: #fff;
+      box-shadow: 0 8px 24px fade(#000, 8);
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+      }
+      figcaption {
+        margin-top: 12px;
+        font-size: 16px;
+        color: @titleColor;
+        text-align: center;
+      }
+      a {
+        display: block;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .home-page {
+    .home-valuation-wrapper {
+      .valuation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home-page {
+    .home-layout-wrapper {
+      height: auto;
+      padding-bottom: 72px;
+    }
+    .home-valuation-wrapper {
+      padding-bottom: 72px;
+      h2 {
+        margin-top: 64px;
+      }
+      .valuation-note {
+        font-size: 15px;
+      }
+      .valuation-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .valuation-card {
+        padding: 12px;
+      }
+    }
+    .home-func-wrapper {
+      height: auto;
+      .image {
+        margin-bottom: 32px;
+      }
+      .col {
+        height: auto;
       }
     }
   }

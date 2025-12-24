@@ -2,6 +2,7 @@ import React from 'react';
 import DocumentTitle from 'react-document-title';
 import Banner from './Banner';
 import Page1 from './Page1';
+import ValuationDetail from './ValuationDetail';
 import Page2 from './Page2';
 import Page3 from './Page3';
 import Footer from './Footer';
@@ -14,6 +15,7 @@ class Home extends React.PureComponent {
       <div className="home-page">
         <Banner key="banner" />
         <Page1 key="page1" />
+        <ValuationDetail key="valuation" />
         <Page2 key="page2" />
         <Page3 key="page3" />
         <Footer key="footer" />
