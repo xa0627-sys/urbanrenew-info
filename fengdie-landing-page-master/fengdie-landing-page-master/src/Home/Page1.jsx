@@ -33,7 +33,7 @@ export default function Page1({ onSelect }) {
         key={i}
         type="bottom"
         className="col"
-        componentProps={{ span: 8 }}
+        componentProps={{ span: { xs: 24, sm: 12, md: 8 } }}
       >
         {isClickable ? (
           <button
