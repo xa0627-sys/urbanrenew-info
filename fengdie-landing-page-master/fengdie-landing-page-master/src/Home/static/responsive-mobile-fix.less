@@ -84,7 +84,9 @@
 
 
 
-/* Fix mobile layout - stack vertically on mobile */
+
+
+/* MOBILE FIX - Complete redesign for mobile layout */
 @media (max-width: 768px) {
   .home-page {
     display: block !important;
@@ -92,13 +94,52 @@
   
   .home-layout {
     display: block !important;
-    height: auto !important;
     flex-direction: column !important;
+    height: auto !important;
+    padding: 0 !important;
   }
   
   .home-banner-content-wrapper,
   .home-banner-image-wrapper {
     width: 100% !important;
+    display: block !important;
     margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .home-banner-image-wrapper img,
+  .rc-queue-anim img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+    display: block !important;
+  }
+  
+  .fd-content {
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  .home-banner-content-wrapper > * {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 15px !important;
+  }
+  
+  h2, h3, h4, h5 {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 10px 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-banner-content-wrapper,
+  .home-banner-image-wrapper {
+    width: 100% !important;
+  }
+  
+  .home-banner-image-wrapper img {
+    width: 100% !important;
   }
 }
