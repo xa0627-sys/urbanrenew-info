@@ -80,3 +80,25 @@
     padding: 12px !important;
   }
 }
+
+
+
+
+/* Fix mobile layout - stack vertically on mobile */
+@media (max-width: 768px) {
+  .home-page {
+    display: block !important;
+  }
+  
+  .home-layout {
+    display: block !important;
+    height: auto !important;
+    flex-direction: column !important;
+  }
+  
+  .home-banner-content-wrapper,
+  .home-banner-image-wrapper {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
