@@ -147,3 +147,46 @@
     min-height: 300px !important;
   }
 }
+
+
+  /* ===== 首頁完整版面配置優化 ===== */
+  .home-page {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* Banner - 全寬頂部 */
+  .home-banner {
+    width: 100%;
+    height: auto;
+    padding: 32px 0 24px;
+  }
+
+  .home-banner img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: none !important;
+  }
+
+  /* Home Layout - 確保內容全寬垂直堆疊 */
+  .home-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .home-layout > div {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* 確保所有圖片在手機上全寬 */
+  .home-page img,
+  .rc-queue-anim img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    display: block;
+  }
