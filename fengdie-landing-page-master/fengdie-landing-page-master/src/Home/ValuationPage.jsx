@@ -5,6 +5,7 @@ const valuationImages = Array.from({ length: 15 }, (_, index) => getImagePath(`$
 
 export default function ValuationPage({ onBack }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const headerImage = valuationImages[0];
   const galleryImages = valuationImages.slice(1);
   const allImages = valuationImages;
@@ -15,6 +16,7 @@ export default function ValuationPage({ onBack }) {
 
   const closeLightbox = () => {
     setLightboxIndex(null);
+    setIsPlaying(false);
   };
 
   const showPrev = () => {
@@ -49,6 +51,20 @@ export default function ValuationPage({ onBack }) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [lightboxIndex]);
+
+  useEffect(() => {
+    if (!isPlaying || lightboxIndex === null) {
+      return undefined;
+    }
+    const interval = window.setInterval(() => {
+      showNext();
+    }, 3000);
+    return () => window.clearInterval(interval);
+  }, [isPlaying, lightboxIndex]);
+
+  const togglePlay = () => {
+    setIsPlaying((current) => !current);
+  };
 
   return (
     <div className="valuation-page">
@@ -106,6 +122,18 @@ export default function ValuationPage({ onBack }) {
           >
             ›
           </button>
+          <div className="valuation-lightbox-controls" aria-live="polite">
+            <button type="button" onClick={showPrev} className="valuation-lightbox-control">
+              上一張
+            </button>
+            <button type="button" onClick={togglePlay} className="valuation-lightbox-control">
+              {isPlaying ? '暫停' : '播放'}
+            </button>
+            <button type="button" onClick={showNext} className="valuation-lightbox-control">
+              下一張
+            </button>
+            <span className="valuation-lightbox-hint">鍵盤：Esc 關閉、←/→ 切換</span>
+          </div>
         </div>
       )}
     </div>

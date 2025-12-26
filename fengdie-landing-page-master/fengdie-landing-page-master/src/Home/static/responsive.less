@@ -110,6 +110,10 @@
       .valuation-header {
         gap: 12px;
       }
+      .valuation-header img {
+        max-height: 260px;
+        object-fit: cover;
+      }
       .valuation-back {
         align-self: center;
       }
@@ -134,6 +138,17 @@
       }
       .valuation-lightbox-next {
         right: 12px;
+      }
+      .valuation-lightbox-controls {
+        bottom: 16px;
+        padding: 8px 12px;
+        gap: 8px;
+      }
+      .valuation-lightbox-control {
+        font-size: 13px;
+      }
+      .valuation-lightbox-hint {
+        display: none;
       }
     }
     .home-footer-wrapper {
@@ -206,6 +221,8 @@
       padding: 40px 12px 64px;
       .valuation-header img {
         border-radius: 16px;
+        max-height: 220px;
+        object-fit: cover;
       }
       .valuation-lightbox-image {
         max-width: 94vw;
@@ -225,6 +242,19 @@
       .valuation-lightbox-close {
         top: 12px;
         right: 12px;
+      }
+      .valuation-lightbox-controls {
+        width: calc(100% - 24px);
+        bottom: 12px;
+        border-radius: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .valuation-lightbox-control {
+        font-size: 13px;
+      }
+      .valuation-lightbox-hint {
+        display: none;
       }
     }
   }
