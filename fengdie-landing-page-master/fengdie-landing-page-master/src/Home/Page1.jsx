@@ -5,6 +5,7 @@ import { Row, Col } from 'antd';
 import { page1 } from './data';
 
 export default function Page1({ onSelect }) {
+  const isDesktop = typeof window === 'undefined' ? true : window.innerWidth >= 769;
   const children = page1.map((d, i) => {
     const isClickable = Boolean(d.id && onSelect);
     const handleSelect = () => {
@@ -53,21 +54,31 @@ export default function Page1({ onSelect }) {
       </QueueAnim>
     );
   });
+  const content = (
+    <QueueAnim className="home-func" type="bottom" key="home-func" ease="easeOutQuart" leaveReverse>
+      <QueueAnim
+        key="content"
+        component={Row}
+        type="bottom"
+        componentProps={{ gutter: 171 }}
+      >
+        {children}
+      </QueueAnim>
+    </QueueAnim>
+  );
+
   return (
     <div className="home-layout-wrapper home-func-wrapper" id="home-func" >
       <h2>你該知道的都更觀念</h2>
       <i className="line" />
-      <OverPack className="home-layout" location="home-func" playScale={0.4}>
-        <QueueAnim className="home-func" type="bottom" key="home-func" ease="easeOutQuart" leaveReverse>
-          <QueueAnim
-            key="content"
-            component={Row}
-            type="bottom"
-            componentProps={{ gutter: 171 }}
-          >
-            {children}
-          </QueueAnim>
-        </QueueAnim>
-      </OverPack>
+      {isDesktop ? (
+        <div className="home-layout">
+          {content}
+        </div>
+      ) : (
+        <OverPack className="home-layout" location="home-func" playScale={0.4}>
+          {content}
+        </OverPack>
+      )}
     </div>);
 }
