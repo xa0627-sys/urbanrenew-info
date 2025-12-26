@@ -153,7 +153,7 @@
     }
   }
   .valuation-page {
-      background: #fff;
+    background: #fff;
     padding: 72px 24px 120px;
     text-align: center;
     .valuation-header {
@@ -163,11 +163,6 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
-    }
-    .valuation-header a {
-      display: block;
-      width: 100%;
-      cursor: zoom-in;
     }
     .valuation-header img {
       width: 100%;
@@ -193,6 +188,13 @@
     .valuation-back:hover {
       border-color: #FFBF00;
     }
+    .valuation-image-button {
+      border: none;
+      background: transparent;
+      padding: 0;
+      width: 100%;
+      cursor: zoom-in;
+    }
     .valuation-gallery {
       max-width: 1120px;
       margin: 0 auto;
@@ -203,11 +205,10 @@
     .valuation-card {
       margin: 0;
     }
-    .valuation-card a {
+    .valuation-card .valuation-image-button {
       display: block;
       border-radius: 16px;
       overflow: hidden;
-      cursor: zoom-in;
       box-shadow: 0 8px 24px fade(#000, 10);
       background: #fff;
     }
@@ -215,6 +216,49 @@
       width: 100%;
       height: auto;
       display: block;
+    }
+    .valuation-lightbox {
+      position: fixed;
+      inset: 0;
+      background: fade(#000, 78);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      z-index: 1000;
+      padding: 24px;
+    }
+    .valuation-lightbox-image {
+      max-width: 80vw;
+      max-height: 80vh;
+      border-radius: 16px;
+      box-shadow: 0 16px 40px fade(#000, 30);
+      object-fit: contain;
+      background: #fff;
+    }
+    .valuation-lightbox-nav {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: none;
+      background: fade(#fff, 80);
+      color: #000;
+      font-size: 28px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .valuation-lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      border: none;
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: #fff;
+      font-size: 14px;
+      cursor: pointer;
     }
   }
   .home-hover {
