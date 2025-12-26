@@ -11,4 +11,4 @@ const getAssetBase = () => {
   return '/';
 };
 
-export const getImagePath = (fileName) => `/assets/images/${fileName}`;
+export const getImagePath = (fileName) => `${getAssetBase()}assets/images/${fileName}`;
