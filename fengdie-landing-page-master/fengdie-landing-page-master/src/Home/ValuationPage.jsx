@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getImagePath } from './assetPaths';
 
 const valuationImages = Array.from({ length: 15 }, (_, index) => getImagePath(`${index + 1}.png`));
@@ -31,6 +31,27 @@ export default function ValuationPage({ onBack }) {
     });
   };
 
+  useEffect(() => {
+    if (lightboxIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        showPrev();
+      }
+      if (event.key === 'ArrowRight') {
+        showNext();
+      }
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxIndex]);
+
   return (
     <div className="valuation-page">
       <div className="valuation-header">
@@ -61,17 +82,32 @@ export default function ValuationPage({ onBack }) {
           <button className="valuation-lightbox-close" type="button" onClick={closeLightbox}>
             關閉
           </button>
-          <button className="valuation-lightbox-nav valuation-lightbox-prev" type="button" onClick={showPrev}>
-            ‹
-          </button>
-          <img
-            className="valuation-lightbox-image"
-            src={allImages[lightboxIndex]}
-            alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
-          />
-          <button className="valuation-lightbox-nav valuation-lightbox-next" type="button" onClick={showNext}>
-            ›
-          </button>
+          <div className="valuation-lightbox-content">
+            <button
+              className="valuation-lightbox-nav valuation-lightbox-prev"
+              type="button"
+              onClick={showPrev}
+              aria-label="查看上一張圖片"
+            >
+              ‹
+            </button>
+            <img
+              className="valuation-lightbox-image"
+              src={allImages[lightboxIndex]}
+              alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
+            />
+            <button
+              className="valuation-lightbox-nav valuation-lightbox-next"
+              type="button"
+              onClick={showNext}
+              aria-label="查看下一張圖片"
+            >
+              ›
+            </button>
+          </div>
+          <p className="valuation-lightbox-caption">
+            {`第 ${lightboxIndex + 1} 張 / 共 ${allImages.length} 張`}
+          </p>
         </div>
       )}
     </div>
