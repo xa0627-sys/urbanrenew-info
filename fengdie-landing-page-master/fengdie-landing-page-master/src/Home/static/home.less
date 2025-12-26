@@ -116,6 +116,11 @@
       text-align: center;
       margin-top: -120px;
     }
+    .home-banner-image {
+      width: 100%;
+      height: auto;
+      max-width: 520px;
+    }
   }
   /* 功能介绍 */
   .home-func-wrapper {
@@ -270,6 +275,34 @@
 
 /* 手機視圖改進 - 增大文字和圖片尺寸 */
 @media (max-width: 768px) {
+  .home-banner {
+    height: auto;
+    padding: 80px 0 40px;
+  }
+
+  .home-banner .home-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-banner .home-banner-content-wrapper,
+  .home-banner .home-banner-image-wrapper {
+    width: 100%;
+  }
+
+  .home-banner .home-banner-content-wrapper {
+    height: auto;
+    margin-bottom: 24px;
+  }
+
+  .home-banner .home-banner-image-wrapper {
+    margin-top: 0;
+  }
+
+  .home-banner .home-banner-image {
+    max-width: 100%;
+  }
+
   /* 標題文字放大 */
   h1, h2, h3 {
     font-size: 1.2em !important;
@@ -302,6 +335,28 @@
 
 /* 平板視圖改進 */
 @media (max-width: 1024px) and (min-width: 768px) {
+  .home-banner {
+    height: auto;
+  }
+
+  .home-banner .home-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-banner .home-banner-content-wrapper,
+  .home-banner .home-banner-image-wrapper {
+    width: 100%;
+  }
+
+  .home-banner .home-banner-image-wrapper {
+    margin-top: 0;
+  }
+
+  .home-banner .home-banner-image {
+    max-width: 80%;
+  }
+
   .fd-content h3 {
     font-size: 1.15em !important;
   }
