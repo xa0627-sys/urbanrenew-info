@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getImagePath } from './assetPaths';
 
 const valuationImages = Array.from({ length: 15 }, (_, index) => getImagePath(`${index + 1}.png`));
@@ -31,6 +31,35 @@ export default function ValuationPage({ onBack }) {
     });
   };
 
+  useEffect(() => {
+    if (lightboxIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+      if (event.key === 'ArrowLeft') {
+        showPrev();
+      }
+      if (event.key === 'ArrowRight') {
+        showNext();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxIndex, showNext, showPrev]);
+
+  const handleLightboxClick = (event) => {
+    if (event.target === event.currentTarget) {
+      closeLightbox();
+    }
+  };
+
   return (
     <div className="valuation-page">
       <div className="valuation-header">
@@ -57,11 +86,27 @@ export default function ValuationPage({ onBack }) {
         ))}
       </div>
       {lightboxIndex !== null && (
-        <div className="valuation-lightbox" role="dialog" aria-modal="true">
-          <button className="valuation-lightbox-close" type="button" onClick={closeLightbox}>
+        <div
+          className="valuation-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="圖片放大檢視"
+          onClick={handleLightboxClick}
+        >
+          <button
+            className="valuation-lightbox-close"
+            type="button"
+            onClick={closeLightbox}
+            aria-label="關閉圖片放大檢視"
+          >
             關閉
           </button>
-          <button className="valuation-lightbox-nav valuation-lightbox-prev" type="button" onClick={showPrev}>
+          <button
+            className="valuation-lightbox-nav valuation-lightbox-prev"
+            type="button"
+            onClick={showPrev}
+            aria-label="上一張圖片"
+          >
             ‹
           </button>
           <img
@@ -69,7 +114,12 @@ export default function ValuationPage({ onBack }) {
             src={allImages[lightboxIndex]}
             alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
           />
-          <button className="valuation-lightbox-nav valuation-lightbox-next" type="button" onClick={showNext}>
+          <button
+            className="valuation-lightbox-nav valuation-lightbox-next"
+            type="button"
+            onClick={showNext}
+            aria-label="下一張圖片"
+          >
             ›
           </button>
         </div>
