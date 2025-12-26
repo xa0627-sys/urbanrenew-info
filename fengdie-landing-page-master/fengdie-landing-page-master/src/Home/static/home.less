@@ -482,4 +482,107 @@
   p, span {
     font-size: 13px !important;
   }
+
+// Menu card styles
+.menu-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+}
+
+.menu-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.menu-card {
+  background: white;
+  border-radius: 8px;
+  border-top: 4px solid;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.menu-card h3 {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+.menu-card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0.5rem 0;
+}
+
+.card-arrow {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: #999;
+  transition: all 0.3s ease;
+}
+
+.menu-card:hover .card-arrow {
+  color: #007bff;
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .menu-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .menu-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .menu-card {
+    padding: 1rem;
+  }
+
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .menu-card h3 {
+    font-size: 1rem;
+  }
+
+  .menu-card p {
+    font-size: 0.8rem;
+  }
+}
 }
