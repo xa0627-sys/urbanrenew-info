@@ -34,7 +34,7 @@ jobs:
           cache-dependency-path: fengdie-landing-page-master/fengdie-landing-page-master/package.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build

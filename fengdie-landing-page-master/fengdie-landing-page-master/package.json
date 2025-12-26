@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-../
-=======
 {
   "private": true,
   "entry": {
@@ -50,4 +47,3 @@
     "deploy": "rm -rf dist && npm run build && node ./deploy.js"
   }
 }
->>>>>>> bd1fc95 (Fix: Correct assets path in build script from ../../ to ..)
