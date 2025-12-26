@@ -1,77 +1,144 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
+import './ValuationPage.scss';
 import { getImagePath } from './assetPaths';
-
-const valuationImages = Array.from({ length: 15 }, (_, index) => getImagePath(`${index + 1}.png`));
 
 export default function ValuationPage({ onBack }) {
   const [lightboxIndex, setLightboxIndex] = useState(null);
-  const headerImage = valuationImages[0];
-  const galleryImages = valuationImages.slice(1);
-  const allImages = valuationImages;
+  const [valuationImages] = useState(
+    Array.from({ length: 15 }, (_, index) => getImagePath(`${index + 1}.png`))
+  );
+  const lightboxRef = useRef(null);
 
-  const openLightbox = (index) => {
+  const openLightbox = useCallback((index) => {
     setLightboxIndex(index);
-  };
+  }, []);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightboxIndex(null);
-  };
+  }, []);
 
-  const showPrev = () => {
-    setLightboxIndex((current) => {
-      const nextIndex = current === 0 ? allImages.length - 1 : current - 1;
-      return nextIndex;
-    });
-  };
+  const goToPrevious = useCallback(() => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev === 0 ? valuationImages.length - 1 : prev - 1));
+    }
+  }, [lightboxIndex, valuationImages.length]);
 
-  const showNext = () => {
-    setLightboxIndex((current) => {
-      const nextIndex = current === allImages.length - 1 ? 0 : current + 1;
-      return nextIndex;
-    });
-  };
+  const goToNext = useCallback(() => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((prev) => (prev === valuationImages.length - 1 ? 0 : prev + 1));
+    }
+  }, [lightboxIndex, valuationImages.length]);
+
+  useEffect(() => {
+    const handleKeydown = (e) => {
+      if (lightboxIndex === null) return;
+      
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goToPrevious();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        goToNext();
+      }
+    };
+
+    if (lightboxIndex !== null) {
+      window.addEventListener('keydown', handleKeydown);
+      return () => window.removeEventListener('keydown', handleKeydown);
+    }
+  }, [lightboxIndex, closeLightbox, goToPrevious, goToNext]);
 
   return (
     <div className="valuation-page">
-      <div className="valuation-header">
-        <button className="valuation-back" type="button" onClick={onBack}>
-          返回上一頁
-        </button>
-        <button className="valuation-image-button" type="button" onClick={() => openLightbox(0)}>
-          <img src={headerImage} alt="自主都市更新權利變換估價 圖1" />
-        </button>
-        <h2>自主都市更新權利變換估價</h2>
-        <p className="valuation-hint">點擊圖片可放大瀏覽</p>
+      <div className="page-header">
+        <h1>估值圖庫</h1>
+        <button className="back-btn" onClick={onBack} aria-label="返回">返回</button>
       </div>
-      <div className="valuation-gallery">
-        {galleryImages.map((src, index) => (
-          <figure key={src} className="valuation-card">
-            <button
-              className="valuation-image-button"
-              type="button"
-              onClick={() => openLightbox(index + 1)}
-            >
-              <img src={src} alt={`自主都市更新權利變換估價 圖${index + 2}`} loading="lazy" />
-            </button>
-          </figure>
+
+      <div className="gallery-grid">
+        {valuationImages.map((imageSrc, index) => (
+          <div
+            key={index}
+            className="gallery-card"
+            onClick={() => openLightbox(index)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(index);
+              }
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <div className="image-container">
+              <img src={imageSrc} alt={`估值圖片 ${index + 1}`} loading="lazy" />
+              <div className="overlay">
+                <span className="view-text">點擊查看</span>
+              </div>
+            </div>
+            <div className="card-footer">
+              <p className="image-title">圖片 #{index + 1}</p>
+            </div>
+          </div>
         ))}
       </div>
+
       {lightboxIndex !== null && (
-        <div className="valuation-lightbox" role="dialog" aria-modal="true">
-          <button className="valuation-lightbox-close" type="button" onClick={closeLightbox}>
-            關閉
-          </button>
-          <button className="valuation-lightbox-nav valuation-lightbox-prev" type="button" onClick={showPrev}>
-            ‹
-          </button>
-          <img
-            className="valuation-lightbox-image"
-            src={allImages[lightboxIndex]}
-            alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
-          />
-          <button className="valuation-lightbox-nav valuation-lightbox-next" type="button" onClick={showNext}>
-            ›
-          </button>
+        <div 
+          className="lightbox-overlay" 
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="圖片燈箱"
+        >
+          <div 
+            className="lightbox-container" 
+            onClick={(e) => e.stopPropagation()}
+            ref={lightboxRef}
+          >
+            <button
+              className="lightbox-close"
+              onClick={closeLightbox}
+              aria-label="關閉燈箱"
+              type="button"
+            >
+              ×
+            </button>
+
+            <div className="lightbox-content">
+              <img
+                src={valuationImages[lightboxIndex]}
+                alt={`估值圖片 ${lightboxIndex + 1} 全螢幕検視`}
+                className="lightbox-image"
+              />
+            </div>
+
+            <button
+              className="lightbox-nav lightbox-prev"
+              onClick={goToPrevious}
+              aria-label="上一張圖片"
+              type="button"
+            >
+              ‹
+            </button>
+            <button
+              className="lightbox-nav lightbox-next"
+              onClick={goToNext}
+              aria-label="下一張圖片"
+              type="button"
+            >
+              ›
+            </button>
+
+            <div className="lightbox-info">
+              <span className="image-counter">
+                {lightboxIndex + 1} / {valuationImages.length}
+              </span>
+            </div>
+          </div>
         </div>
       )}
     </div>
