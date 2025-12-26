@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { getImagePath } from './assetPaths';
 
 const valuationImages = Array.from({ length: 15 }, (_, index) => getImagePath(`${index + 1}.png`));
@@ -31,6 +31,32 @@ export default function ValuationPage({ onBack }) {
     });
   };
 
+  useEffect(() => {
+    if (lightboxIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
+      if (event.key === 'ArrowLeft') {
+        showPrev();
+      }
+      if (event.key === 'ArrowRight') {
+        showNext();
+      }
+    };
+
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [lightboxIndex]);
+
   return (
     <div className="valuation-page">
       <div className="valuation-header">
@@ -57,21 +83,33 @@ export default function ValuationPage({ onBack }) {
         ))}
       </div>
       {lightboxIndex !== null && (
-        <div className="valuation-lightbox" role="dialog" aria-modal="true">
-          <button className="valuation-lightbox-close" type="button" onClick={closeLightbox}>
-            關閉
-          </button>
-          <button className="valuation-lightbox-nav valuation-lightbox-prev" type="button" onClick={showPrev}>
-            ‹
-          </button>
-          <img
-            className="valuation-lightbox-image"
-            src={allImages[lightboxIndex]}
-            alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
-          />
-          <button className="valuation-lightbox-nav valuation-lightbox-next" type="button" onClick={showNext}>
-            ›
-          </button>
+        <div className="valuation-lightbox" role="dialog" aria-modal="true" onClick={closeLightbox}>
+          <div className="valuation-lightbox-content" onClick={(event) => event.stopPropagation()}>
+            <button className="valuation-lightbox-close" type="button" onClick={closeLightbox}>
+              關閉
+            </button>
+            <button
+              className="valuation-lightbox-nav valuation-lightbox-prev"
+              type="button"
+              onClick={showPrev}
+              aria-label="上一張"
+            >
+              ‹
+            </button>
+            <img
+              className="valuation-lightbox-image"
+              src={allImages[lightboxIndex]}
+              alt={`自主都市更新權利變換估價 圖${lightboxIndex + 1}`}
+            />
+            <button
+              className="valuation-lightbox-nav valuation-lightbox-next"
+              type="button"
+              onClick={showNext}
+              aria-label="下一張"
+            >
+              ›
+            </button>
+          </div>
         </div>
       )}
     </div>
