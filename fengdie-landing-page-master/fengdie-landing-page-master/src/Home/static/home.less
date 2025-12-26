@@ -153,11 +153,11 @@
     }
   }
   .valuation-page {
-      background: #fff;
+    background: #fff;
     padding: 72px 24px 120px;
     text-align: center;
     .valuation-header {
-      max-width: 960px;
+      max-width: 720px;
       margin: 0 auto 48px;
       display: flex;
       flex-direction: column;
@@ -171,6 +171,7 @@
     }
     .valuation-header img {
       width: 100%;
+      max-width: 720px;
       height: auto;
       border-radius: 16px;
       box-shadow: 0 12px 32px fade(#000, 12);
@@ -194,11 +195,12 @@
       border-color: #FFBF00;
     }
     .valuation-gallery {
-      max-width: 1120px;
+      max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
       gap: 24px;
+      justify-content: center;
     }
     .valuation-card {
       margin: 0;
@@ -213,8 +215,10 @@
     }
     .valuation-card img {
       width: 100%;
+      max-width: 280px;
       height: auto;
       display: block;
+      margin: 0 auto;
     }
   }
   .home-hover {
