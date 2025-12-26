@@ -8,10 +8,21 @@
     text-align: center;
   }
   .logo{ margin-bottom: 5px; }
+  .logo img {
+    width: 72px;
+    height: auto;
+  }
   .footer-info {
     margin-top: 16px;
     p {
       margin: 0 0 6px;
     }
+  }
+}
+
+@media (min-width: 769px) {
+  .home-page .home-footer-wrapper .logo img {
+    width: 33%;
+    max-width: 320px;
   }
 }
