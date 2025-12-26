@@ -131,6 +131,43 @@
     width: 100% !important;
     margin: 0 0 10px 0 !important;
   }
+
+  /* Force feature cards to stack vertically */
+  .home-func .ant-row {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .home-func .ant-col,
+  .home-func-wrapper .col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .home-func-wrapper .home-func-card {
+    text-align: left !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    padding: 16px !important;
+  }
+
+  .home-func-wrapper .home-func-card .image {
+    width: 120px !important;
+    height: 120px !important;
+    min-height: 120px !important;
+    margin: 0 !important;
+    background-size: contain !important;
+  }
+
+  .home-func-wrapper .home-func-card h3 {
+    margin: 0 !important;
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    word-break: keep-all !important;
+  }
 }
 
 @media (max-width: 480px) {
