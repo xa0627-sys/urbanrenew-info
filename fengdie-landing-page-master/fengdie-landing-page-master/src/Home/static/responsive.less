@@ -1,22 +1,76 @@
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .home-page {
     .fd-content {
       min-width: 0;
     }
+    .home-layout {
+      width: 100%;
+      padding: 0 24px;
+    }
     .home-layout-wrapper {
-      height: auto;
-      padding: 56px 0;
+      padding: 72px 0 80px;
+    }
+    .home-banner {
+      padding: 32px 0 48px;
       .home-layout {
-        width: 100%;
-        padding: 0 16px;
-        height: auto;
-        > div {
-          float: none;
-        }
+        gap: 16px;
+      }
+      h1 {
+        font-size: 32px;
+        line-height: 42px;
       }
     }
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .home-page {
+    .home-layout-wrapper {
+      padding: 64px 0 72px;
+    }
     h2 {
-      margin-top: 32px;
+      font-size: 26px;
+      line-height: 34px;
+    }
+    .home-banner {
+      padding: 28px 0 40px;
+      h1 {
+        font-size: 30px;
+        line-height: 40px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+    .home-func-wrapper {
+      .home-func {
+        .ant-col {
+          width: 50% !important;
+          max-width: 50% !important;
+          flex: 0 0 50% !important;
+        }
+      }
+      .image {
+        height: 180px;
+      }
+    }
+    .valuation-page {
+      padding: 56px 24px 96px;
+      .valuation-lightbox-image {
+        max-width: 82vw;
+        max-height: 78vh;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+  .home-page {
+    .home-layout-wrapper {
+      padding: 56px 0 64px;
+    }
+    h2 {
       font-size: 24px;
       line-height: 32px;
     }
@@ -24,63 +78,36 @@
       font-size: 18px;
       line-height: 26px;
     }
-    .line {
-      margin: 12px auto 32px;
-    }
     .home-banner {
-      height: auto;
-      padding: 48px 0 32px;
-      .home-layout {
-        flex-direction: column;
-        text-align: center;
-      }
-      .home-banner-content-wrapper,
-      .home-banner-image-wrapper {
-        width: 100%;
-      }
-      .home-banner-content-wrapper {
-        height: auto;
-        margin-bottom: 24px;
-      }
-      .home-banner-image-wrapper {
-        margin-top: 0;
-        img {
-          width: 100%;
-          max-width: 100%;
-          height: auto;
-        }
-      }
+      padding: 28px 0 32px;
       h1 {
         font-size: 26px;
         line-height: 34px;
       }
       p {
-        margin-bottom: 24px;
         font-size: 15px;
         line-height: 22px;
       }
-      button {
-        width: 140px;
-        height: 44px;
-        font-size: 16px;
-      }
     }
     .home-func-wrapper {
-      height: auto;
+      .home-func {
+        .ant-col {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex: 0 0 100% !important;
+        }
+      }
+      .home-func-card {
+        padding: 20px;
+        gap: 12px;
+      }
       .image {
         height: 160px;
-        margin-bottom: 24px;
-        background-size: contain;
-      }
-      .col {
-        height: auto;
-        margin-bottom: 24px;
       }
     }
     .valuation-page {
       padding: 48px 16px 80px;
       .valuation-header {
-        margin-bottom: 32px;
         gap: 12px;
       }
       .valuation-back {
@@ -90,21 +117,16 @@
         grid-template-columns: 1fr;
         gap: 16px;
       }
-      .valuation-card {
-        display: flex;
-        flex-direction: column;
-      }
       .valuation-lightbox {
         padding: 16px;
-        gap: 8px;
       }
       .valuation-lightbox-image {
         max-width: 92vw;
         max-height: 70vh;
       }
       .valuation-lightbox-nav {
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         font-size: 22px;
       }
       .valuation-lightbox-prev {
@@ -113,101 +135,97 @@
       .valuation-lightbox-next {
         right: 12px;
       }
-      .valuation-lightbox-close {
-        top: 16px;
-        right: 16px;
-        font-size: 13px;
-      }
     }
     .home-footer-wrapper {
       height: auto;
       .home-layout {
         padding: 40px 16px 32px;
       }
-      .logo img {
-        width: 56px;
-        height: 56px;
-      }
-      .footer-info {
-        font-size: 13px;
-      }
     }
   }
 }
 
-/* Enhanced mobile readability - Increase font and image sizes */
-@media (max-width: 768px) {
-  /* Increase heading sizes */
-  h1, .ant-btn-lg {
-    font-size: 24px !important;
-  }
-  
-  h2 {
-    font-size: 20px !important;
-  }
-  
-  h3 {
-    font-size: 18px !important;
-  }
-  
-  /* Increase body text */
-  p, span, .ant-btn, li {
-    font-size: 16px !important;
-    line-height: 1.8 !important;
-  }
-  
-  /* Increase image sizes */
-  img {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-  
-  /* Banner image adjustments */
-  .home-page-wrapper img,
-  .content-img {
-    min-height: 300px !important;
+@media (max-width: 480px) {
+  .home-page {
+    .home-layout-wrapper {
+      padding: 40px 0 48px;
+    }
+    h2 {
+      font-size: 22px;
+      line-height: 30px;
+    }
+    h3 {
+      font-size: 18px;
+      line-height: 26px;
+    }
+    .line {
+      margin: 8px auto 24px;
+    }
+    .home-banner {
+      padding: 20px 0 24px;
+      h1 {
+        font-size: 24px;
+        line-height: 32px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 22px;
+      }
+      .home-banner-image-wrapper {
+        margin-top: 0;
+      }
+    }
+    .home-func-wrapper {
+      text-align: left;
+      .home-func {
+        .ant-col {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex: 0 0 100% !important;
+        }
+      }
+      .home-func-card {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        align-items: flex-start;
+        text-align: left;
+      }
+      .image {
+        display: none;
+      }
+      .col {
+        margin-bottom: 12px;
+      }
+      h3 {
+        margin-bottom: 0;
+      }
+    }
+    .valuation-page {
+      padding: 40px 12px 64px;
+      .valuation-header img {
+        border-radius: 16px;
+      }
+      .valuation-lightbox-image {
+        max-width: 94vw;
+        max-height: 68vh;
+      }
+      .valuation-lightbox-nav {
+        width: 34px;
+        height: 34px;
+        font-size: 20px;
+      }
+      .valuation-lightbox-prev {
+        left: 8px;
+      }
+      .valuation-lightbox-next {
+        right: 8px;
+      }
+      .valuation-lightbox-close {
+        top: 12px;
+        right: 12px;
+      }
+    }
   }
 }
-
-
-  /* ===== 首頁完整版面配置優化 ===== */
-  .home-page {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  /* Banner - 全寬頂部 */
-  .home-banner {
-    width: 100%;
-    height: auto;
-    padding: 32px 0 24px;
-  }
-
-  .home-banner img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: none !important;
-  }
-
-  /* Home Layout - 確保內容全寬垂直堆疊 */
-  .home-layout {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .home-layout > div {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  /* 確保所有圖片在手機上全寬 */
-  .home-page img,
-  .rc-queue-anim img {
-    width: 100% !important;
-    height: auto !important;
-    max-width: 100% !important;
-    display: block;
-  }
