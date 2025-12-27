@@ -46,10 +46,11 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect } = React;
+        const { useState, useEffect, useRef } = React;
 
         // 圖片基礎路徑
-        const IMG_BASE_URL = "https://raw.githubusercontent.com/xa0627-sys/urbanrenew-info/main/assets/images/";
+        const IMG_BASE_URL = "./assets/images/";
+        const THEME2_PARAGRAPH2_BASE_URL = `${IMG_BASE_URL}theme-2/paragraph-2/`;
 
         const Icon = ({ name, size = 24, className }) => {
             useEffect(() => {
@@ -86,7 +87,7 @@
                                     />
                                 </div>
                                 <div class="flex flex-col">
-                                    <span class="font-bold text-xl text-gray-800 tracking-wide leading-none">中力都市更新</span>
+                                    <span class="font-bold text-xl text-gray-800 tracking-wide leading-none">中力都市更新[東湖4-7]</span>
                                     <span class="text-xs text-gray-500 tracking-wider">ZHONGLI URBAN RENEWAL</span>
                                 </div>
                             </div>
@@ -256,6 +257,78 @@
 
         // 主題 2 (原主題 1)：都更觀念
         const Concepts = () => {
+            const slides = Array.from({ length: 15 }, (_, index) => ({
+                id: index + 1,
+                src: `${THEME2_PARAGRAPH2_BASE_URL}${index + 1}.png`,
+            }));
+            const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+            const [activeSlideIndex, setActiveSlideIndex] = useState(0);
+            const touchStartRef = useRef(null);
+
+            const openLightbox = (index) => {
+                setActiveSlideIndex(index);
+                setIsLightboxOpen(true);
+            };
+
+            const closeLightbox = () => {
+                setIsLightboxOpen(false);
+            };
+
+            const goNext = () => {
+                setActiveSlideIndex((prev) => (prev + 1) % slides.length);
+            };
+
+            const goPrev = () => {
+                setActiveSlideIndex((prev) => (prev - 1 + slides.length) % slides.length);
+            };
+
+            useEffect(() => {
+                if (!isLightboxOpen) {
+                    return;
+                }
+
+                const handleKeyDown = (event) => {
+                    if (event.key === "Escape") {
+                        closeLightbox();
+                    }
+                    if (event.key === "ArrowRight") {
+                        goNext();
+                    }
+                    if (event.key === "ArrowLeft") {
+                        goPrev();
+                    }
+                };
+
+                window.addEventListener("keydown", handleKeyDown);
+                return () => window.removeEventListener("keydown", handleKeyDown);
+            }, [isLightboxOpen]);
+
+            const handleTouchStart = (event) => {
+                const touch = event.touches[0];
+                touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+            };
+
+            const handleTouchEnd = (event) => {
+                if (!touchStartRef.current) {
+                    return;
+                }
+                const touch = event.changedTouches[0];
+                const deltaX = touch.clientX - touchStartRef.current.x;
+                const deltaY = touch.clientY - touchStartRef.current.y;
+                const isHorizontalSwipe = Math.abs(deltaX) > Math.abs(deltaY);
+
+                if (isHorizontalSwipe && Math.abs(deltaX) > 40) {
+                    if (deltaX < 0) {
+                        goNext();
+                    } else {
+                        goPrev();
+                    }
+                }
+                touchStartRef.current = null;
+            };
+
+            const activeSlide = slides[activeSlideIndex];
+
             return (
                 <section id="concepts" class="py-20 bg-slate-50 border-t border-slate-200">
                     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -294,16 +367,20 @@
                                     <p class="text-slate-600 text-sm mb-6 flex-grow">
                                         委託三家專業估價師事務所，依據規範進行價值查估。所有報告皆提送審議會審查，確保公開透明。
                                     </p>
-                                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-zoom-in group-hover:border-blue-300 transition-colors" onClick={() => window.open(`${IMG_BASE_URL}valuation-lightbox.png`, '_blank')}>
-                                        <img 
-                                            src={`${IMG_BASE_URL}valuation-lightbox.png`} 
-                                            alt="估價說明" 
+                                    <button
+                                        type="button"
+                                        onClick={() => openLightbox(0)}
+                                        class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-pointer group-hover:border-blue-300 transition-colors text-left"
+                                    >
+                                        <img
+                                            src={`${THEME2_PARAGRAPH2_BASE_URL}1.png`}
+                                            alt="估價說明"
                                             class="w-full h-32 object-cover rounded-lg mb-2"
                                         />
                                         <div class="text-center text-xs text-blue-600 font-medium flex items-center justify-center gap-1">
-                                            <Icon name="zoom-in" size={12} /> 點擊放大
+                                            <Icon name="layers" size={12} /> 點擊開啟投影片
                                         </div>
-                                    </div>
+                                    </button>
                                 </div>
                             </div>
 
@@ -331,6 +408,72 @@
                                 </div>
                             </div>
                         </div>
+
+                        {isLightboxOpen && (
+                            <div
+                                class="fixed inset-0 z-50 bg-slate-900/80 flex flex-col"
+                                role="dialog"
+                                aria-modal="true"
+                                aria-label="權利變換估價投影片"
+                            >
+                                <div class="flex items-center justify-between px-4 py-3 text-slate-100">
+                                    <div class="flex items-center gap-3">
+                                        <span class="text-xs uppercase tracking-wider text-slate-300">段落 2</span>
+                                        <h4 class="text-sm font-semibold">自主都市更新權利變換估價</h4>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={closeLightbox}
+                                        class="p-2 rounded-full hover:bg-slate-700/70 transition"
+                                        aria-label="關閉投影片"
+                                    >
+                                        <Icon name="x" size={20} />
+                                    </button>
+                                </div>
+
+                                <div
+                                    class="flex-1 px-4 pb-6 flex flex-col items-center justify-center"
+                                    onTouchStart={handleTouchStart}
+                                    onTouchEnd={handleTouchEnd}
+                                >
+                                    <div class="w-full max-w-4xl flex flex-col items-center gap-4">
+                                        <div class="w-full bg-slate-800/40 rounded-2xl p-3 md:p-6 flex items-center justify-center">
+                                            <img
+                                                src={activeSlide.src}
+                                                alt={`投影片 ${activeSlide.id}`}
+                                                class="w-full max-h-[70vh] object-contain rounded-xl shadow-lg"
+                                            />
+                                        </div>
+                                        <div class="flex flex-wrap items-center justify-between gap-4 w-full text-slate-200 text-sm">
+                                            <span>投影片 {activeSlide.id} / {slides.length}</span>
+                                            <div class="flex items-center gap-3">
+                                                <button
+                                                    type="button"
+                                                    onClick={goPrev}
+                                                    class="px-4 py-2 rounded-full bg-slate-700/70 hover:bg-slate-600 transition text-xs font-semibold"
+                                                >
+                                                    <span class="inline-flex items-center gap-1">
+                                                        <Icon name="chevron-left" size={14} /> 上一頁
+                                                    </span>
+                                                </button>
+                                                <button
+                                                    type="button"
+                                                    onClick={goNext}
+                                                    class="px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-400 transition text-xs font-semibold"
+                                                >
+                                                    <span class="inline-flex items-center gap-1">
+                                                        下一頁 <Icon name="chevron-right" size={14} />
+                                                    </span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <p class="text-xs text-slate-400">
+                                            可左右滑動切換投影片，直立時上下滑動可瀏覽頁面內容。
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </section>
             );
