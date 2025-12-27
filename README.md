@@ -1,23 +1,23 @@
-# Urban Renewal Info
+# 中力都市更新資訊平台（精簡版）
 
-This is a landing page template for the Urban Renewal Information project.
+目前專案僅保留 **assets/images** 圖片資產與一份簡化版的 **index.html**，用於展示現有的視覺素材與快速部署靜態頁面。
 
-Based on the fengdie landing page template from ant-motion.
+## 📂 檔案結構
 
-## Installation
+urbanrenew-info/
+├── assets/
+│   └── images/          # 所有圖片素材
+├── index.html           # 簡化版靜態頁面
+└── README.md            # 說明文件
 
-```
-npm install
-```
+## ⚙️ 如何部署到 GitHub Pages
 
-## Development
+1. **確認檔案位置**
+   * index.html 位於 Repository 根目錄
+   * assets/images/ 中保留所有圖片
+2. **設定 GitHub Pages**
+   * 在 Repository 的 **Settings** → **Pages**
+   * **Build and deployment** → **Branch** 選擇 main (或 master) / (root)
+3. **等待部署完成**
+   * 完成後即可透過 Pages 提供的網址瀏覽
 
-```
-npm start
-```
-
-## Build
-
-```
-npm run build
-```
