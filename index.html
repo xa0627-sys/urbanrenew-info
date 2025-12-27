@@ -49,7 +49,8 @@
         const { useState, useEffect } = React;
 
         // 圖片基礎路徑
-        const IMG_BASE_URL = "https://raw.githubusercontent.com/xa0627-sys/urbanrenew-info/main/assets/images/";
+        const IMG_BASE_URL = "./assets/images/";
+        const THEME2_PARAGRAPH2_BASE_URL = `${IMG_BASE_URL}theme-2/paragraph-2/`;
 
         const Icon = ({ name, size = 24, className }) => {
             useEffect(() => {
@@ -294,16 +295,19 @@
                                     <p class="text-slate-600 text-sm mb-6 flex-grow">
                                         委託三家專業估價師事務所，依據規範進行價值查估。所有報告皆提送審議會審查，確保公開透明。
                                     </p>
-                                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-zoom-in group-hover:border-blue-300 transition-colors" onClick={() => window.open(`${IMG_BASE_URL}valuation-lightbox.png`, '_blank')}>
-                                        <img 
-                                            src={`${IMG_BASE_URL}valuation-lightbox.png`} 
-                                            alt="估價說明" 
+                                    <a
+                                        href="#concepts-paragraph-2-slides"
+                                        class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-pointer group-hover:border-blue-300 transition-colors block"
+                                    >
+                                        <img
+                                            src={`${THEME2_PARAGRAPH2_BASE_URL}1.png`}
+                                            alt="估價說明"
                                             class="w-full h-32 object-cover rounded-lg mb-2"
                                         />
                                         <div class="text-center text-xs text-blue-600 font-medium flex items-center justify-center gap-1">
-                                            <Icon name="zoom-in" size={12} /> 點擊放大
+                                            <Icon name="layers" size={12} /> 查看投影片
                                         </div>
-                                    </div>
+                                    </a>
                                 </div>
                             </div>
 
@@ -329,6 +333,43 @@
                                         ))}
                                     </ul>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div id="concepts-paragraph-2-slides" class="mt-16 bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+                                <div>
+                                    <span class="text-blue-600 font-bold tracking-wider uppercase text-xs">段落 2</span>
+                                    <h3 class="text-2xl font-bold text-slate-900 mt-2">自主都市更新權利變換估價</h3>
+                                    <p class="text-slate-500 text-sm mt-2">點選投影片縮圖可開啟原圖。</p>
+                                </div>
+                                <a href="#concepts" class="text-xs text-blue-600 font-medium flex items-center gap-1">
+                                    <Icon name="arrow-up-right" size={12} /> 回到段落列表
+                                </a>
+                            </div>
+                            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                {Array.from({ length: 15 }, (_, index) => {
+                                    const imageNumber = index + 1;
+                                    return (
+                                        <a
+                                            key={imageNumber}
+                                            href={`${THEME2_PARAGRAPH2_BASE_URL}${imageNumber}.png`}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            class="group bg-slate-50 border border-slate-200 rounded-xl p-3 hover:border-blue-300 hover:shadow-md transition"
+                                        >
+                                            <img
+                                                src={`${THEME2_PARAGRAPH2_BASE_URL}${imageNumber}.png`}
+                                                alt={`投影片 ${imageNumber}`}
+                                                class="w-full h-40 object-cover rounded-lg mb-2"
+                                            />
+                                            <div class="text-xs text-slate-500 group-hover:text-blue-600 font-medium flex items-center justify-between">
+                                                <span>投影片 {imageNumber}</span>
+                                                <Icon name="external-link" size={12} />
+                                            </div>
+                                        </a>
+                                    );
+                                })}
                             </div>
                         </div>
                     </div>
