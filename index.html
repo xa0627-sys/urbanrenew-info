@@ -1,153 +1,459 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Urban Renewal Image Gallery</title>
-  <style>
-    :root {
-      color-scheme: light;
-      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background: #f5f6f8;
-      color: #1f2430;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中力都市更新 | 專業・透明・永續</title>
+    
+    <!-- React & ReactDOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
 
-    body {
-      margin: 0;
-      padding: 32px 24px 48px;
-    }
-
-    header {
-      max-width: 980px;
-      margin: 0 auto 32px;
-      text-align: center;
-    }
-
-    header img {
-      width: 84px;
-      height: 84px;
-      object-fit: contain;
-      margin-bottom: 16px;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin: 0 0 12px;
-      letter-spacing: 0.5px;
-    }
-
-    p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #4b5260;
-    }
-
-    .gallery {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    figure {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 24px rgba(31, 36, 48, 0.08);
-      overflow: hidden;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    figure img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      display: block;
-    }
-
-    figcaption {
-      padding: 12px 16px 16px;
-      font-size: 14px;
-      color: #5b6170;
-      text-align: center;
-    }
-  </style>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* 自定義捲軸樣式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <img src="assets/images/f-logo.png" alt="Urban renewal logo" />
-    <h1>中力都市更新資訊平台</h1>
-    <p>目前僅保留圖片資產，以下為可用的視覺素材展示。</p>
-  </header>
+<body class="bg-slate-50 text-slate-800">
+    <div id="root"></div>
 
-  <section class="gallery">
-    <figure>
-      <img src="assets/images/1.png" alt="Banner 1" />
-      <figcaption>Banner 1</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/2.png" alt="Banner 2" />
-      <figcaption>Banner 2</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/3.png" alt="Banner 3" />
-      <figcaption>Banner 3</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/4.png" alt="Banner 4" />
-      <figcaption>Banner 4</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/5.png" alt="Banner 5" />
-      <figcaption>Banner 5</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/6.png" alt="Banner 6" />
-      <figcaption>Banner 6</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/7.png" alt="Banner 7" />
-      <figcaption>Banner 7</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/8.png" alt="Banner 8" />
-      <figcaption>Banner 8</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/9.png" alt="Banner 9" />
-      <figcaption>Banner 9</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/10.png" alt="Banner 10" />
-      <figcaption>Banner 10</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/11.png" alt="Banner 11" />
-      <figcaption>Banner 11</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/12.png" alt="Banner 12" />
-      <figcaption>Banner 12</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/13.png" alt="Banner 13" />
-      <figcaption>Banner 13</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/14.png" alt="Banner 14" />
-      <figcaption>Banner 14</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/15.png" alt="Banner 15" />
-      <figcaption>Banner 15</figcaption>
-    </figure>
-    <figure>
-      <img src="assets/images/Gemini_Generated_Image_台北東湖耶誕快樂.png" alt="台北東湖耶誕快樂" />
-      <figcaption>台北東湖耶誕快樂</figcaption>
-    </figure>
-  </section>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // 圖片基礎路徑
+        const IMG_BASE_URL = "https://raw.githubusercontent.com/xa0627-sys/urbanrenew-info/main/assets/images/";
+
+        const Icon = ({ name, size = 24, className }) => {
+            useEffect(() => {
+                lucide.createIcons();
+            }, [name]);
+            return <i data-lucide={name} width={size} height={size} className={className}></i>;
+        };
+
+        // 導覽列
+        const Navbar = () => {
+            const [isOpen, setIsOpen] = useState(false);
+            // 移除 scroll 偵測，直接固定狀態
+
+            const menuItems = [
+                { name: "案件進度", href: "#progress" },
+                { name: "都更觀念", href: "#concepts" },
+                { name: "平面圖說", href: "#floorplans" },
+                { name: "聯絡我們", href: "#contact", highlight: true },
+            ];
+
+            return (
+                // 修改：移除捲動判斷，直接給予固定的白色背景、陰影與 padding
+                <nav class="fixed top-0 left-0 w-full z-50 bg-white shadow-md py-2">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex items-center justify-between h-16">
+                            {/* Logo */}
+                            <div class="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
+                                <div class="bg-white p-1 rounded border border-gray-100 shadow-sm group-hover:shadow transition-shadow">
+                                    <img 
+                                        src={`${IMG_BASE_URL}f-logo.png`} 
+                                        alt="Logo" 
+                                        class="h-10 w-auto"
+                                        onError={(e) => {e.target.style.display='none'}}
+                                    />
+                                </div>
+                                <div class="flex flex-col">
+                                    <span class="font-bold text-xl text-gray-800 tracking-wide leading-none">中力都市更新</span>
+                                    <span class="text-xs text-gray-500 tracking-wider">ZHONGLI URBAN RENEWAL</span>
+                                </div>
+                            </div>
+                            
+                            {/* Desktop Menu */}
+                            <div class="hidden md:flex ml-10 space-x-8 items-center">
+                                {menuItems.map(item => (
+                                    <a 
+                                        key={item.name}
+                                        href={item.href} 
+                                        class={`${item.highlight 
+                                            ? 'bg-slate-800 text-white hover:bg-slate-700 px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5' 
+                                            : 'text-gray-600 hover:text-blue-600 font-medium px-2 py-2 relative after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all hover:after:w-full'} 
+                                            text-sm transition-all duration-300`}
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </div>
+
+                            {/* Mobile menu button */}
+                            <div class="md:hidden">
+                                <button onClick={() => setIsOpen(!isOpen)} class="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+                                    <Icon name={isOpen ? "x" : "menu"} size={28} />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Mobile Menu */}
+                    {isOpen && (
+                        <div class="md:hidden bg-white border-t absolute w-full shadow-xl">
+                            <div class="px-4 pt-2 pb-6 space-y-2">
+                                {menuItems.map(item => (
+                                    <a 
+                                        key={item.name}
+                                        href={item.href} 
+                                        onClick={() => setIsOpen(false)} 
+                                        class={`block px-4 py-3 rounded-lg font-medium ${item.highlight ? 'bg-slate-800 text-white text-center mt-4' : 'text-gray-700 hover:bg-gray-50'}`}
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </nav>
+            );
+        };
+
+        // Hero (改良版：加大上方間距，確保導覽列不遮擋圖片)
+        const Hero = () => {
+            return (
+                // 將 mt-[72px] 改為 mt-[100px] 以避開導覽列的高度 (64px + 32px padding = 96px)
+                // 移除 max-h 限制，確保圖片按比例完整顯示
+                <div class="relative w-full mt-[100px] bg-white">
+                    <img 
+                        src={`${IMG_BASE_URL}Gemini_Generated_Image_台北東湖耶誕快樂.png`} 
+                        alt="台北東湖耶誕快樂" 
+                        class="w-full h-auto object-contain mx-auto block shadow-sm"
+                    />
+                </div>
+            );
+        };
+
+        // 主題 1 (原主題 3)：案件進度及下次會議資訊
+        const Progress = () => {
+            return (
+                <section id="progress" class="py-16 bg-white relative">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* 標題區 */}
+                        <div class="flex items-center gap-3 mb-10 border-b pb-4 border-gray-100">
+                            <div class="bg-red-600 p-2 rounded-lg text-white shadow-md">
+                                <Icon name="megaphone" size={24} />
+                            </div>
+                            <h2 class="text-2xl font-bold text-gray-900">最新公告：案件進度與會議資訊</h2>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-8">
+                            {/* 最新公告 */}
+                            <div class="bg-blue-50 rounded-2xl p-8 border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-6">
+                                    <h3 class="text-xl font-bold text-blue-900 flex items-center gap-2">
+                                        <Icon name="calendar-days" size={20} /> 下次會議資訊
+                                    </h3>
+                                    <span class="px-3 py-1 bg-blue-200 text-blue-800 text-xs font-bold rounded-full animate-pulse">Coming Soon</span>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Time</p>
+                                        <p class="font-bold text-lg text-gray-800">115年1月 ~ 2月</p>
+                                    </div>
+                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Location</p>
+                                        <p class="font-bold text-gray-800">未定</p>
+                                    </div>
+                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Agenda</p>
+                                        <ul class="list-disc pl-5 text-gray-700 text-sm space-y-2">
+                                            <li>
+                                                <span class="font-bold text-blue-800 block">115/1月中下旬</span>
+                                                團隊工作會議 (討論平面圖與初步估價)
+                                            </li>
+                                            <li>
+                                                <span class="font-bold text-blue-800 block">115/1月底 ~ 2月初</span>
+                                                理事會報告 (初步平面與初步估價)
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* 進度條 */}
+                            <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                                <h3 class="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+                                    <Icon name="trending-up" size={20} /> 目前專案進度
+                                </h3>
+                                <div class="relative pl-4 border-l-2 border-gray-100 space-y-10">
+                                    
+                                    {/* 12月底 */}
+                                    <div class="relative">
+                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
+                                        <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded mb-2">預計 12月底</span>
+                                        <h4 class="font-bold text-lg text-gray-800">平面圖討論與店面規劃</h4>
+                                        <p class="text-sm text-gray-500 mt-1 leading-relaxed">
+                                            預計建築師將提供平面圖供地主討論，並同時邀請一樓店面地主討論規劃意見。
+                                        </p>
+                                        {/* 建築師辛苦的附註 */}
+                                        <div class="mt-3 p-3 bg-orange-50 rounded-lg text-sm text-gray-600 border border-orange-100 flex gap-2">
+                                            <Icon name="info" size={16} className="text-orange-400 flex-shrink-0 mt-0.5" />
+                                            <span class="text-xs">
+                                                小編筆記：因為基地規模限制，建築師正絞盡腦汁，力求在「地下室車道規劃」與「樓上管道間一致性」之間取得完美平衡，非常辛苦！
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* 12/9 */}
+                                    <div class="relative opacity-80">
+                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
+                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">12/09</span>
+                                        <h4 class="font-bold text-lg text-gray-800">代銷提供回饋</h4>
+                                        <p class="text-sm text-gray-500 mt-1">信義代銷針對初步規劃提供平面圖修改意見。</p>
+                                    </div>
+
+                                    {/* 11/21 */}
+                                    <div class="relative opacity-60">
+                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
+                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/21</span>
+                                        <h4 class="font-bold text-lg text-gray-800">市場性評估</h4>
+                                        <p class="text-sm text-gray-500 mt-1">提供初步規畫給信義代銷協助評估市場性。</p>
+                                    </div>
+
+                                     {/* 11/2 */}
+                                    <div class="relative opacity-40">
+                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-200 border-4 border-white"></div>
+                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/02</span>
+                                        <h4 class="font-bold text-lg text-gray-800">啟動建築規劃</h4>
+                                        <p class="text-sm text-gray-500 mt-1">會員大會後，建築師依議決結論，著手發展五拚與六拚的平面圖。</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 主題 2 (原主題 1)：都更觀念
+        const Concepts = () => {
+            return (
+                <section id="concepts" class="py-20 bg-slate-50 border-t border-slate-200">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="text-center mb-16">
+                            <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 02</span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">你該知道的都更觀念</h2>
+                            <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-8">
+                            {/* 卡片 1 */}
+                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div class="relative z-10">
+                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-4">都更兩本書</h3>
+                                    <div class="space-y-4 text-slate-600">
+                                        <div>
+                                            <strong class="text-blue-700 block mb-1">事業計畫</strong>
+                                            <p class="text-sm">決定房子「蓋成什麼樣子」。包含建築設計、容積獎勵與財務計畫。</p>
+                                        </div>
+                                        <div class="border-t border-slate-100 pt-3">
+                                            <strong class="text-blue-700 block mb-1">權利變換計畫</strong>
+                                            <p class="text-sm">決定每位地主「分回多少價值」。透過估價計算土地與建物價值。</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* 卡片 2 */}
+                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div class="relative z-10 h-full flex flex-col">
+                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-4">權利變換估價</h3>
+                                    <p class="text-slate-600 text-sm mb-6 flex-grow">
+                                        委託三家專業估價師事務所，依據規範進行價值查估。所有報告皆提送審議會審查，確保公開透明。
+                                    </p>
+                                    <div class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-zoom-in group-hover:border-blue-300 transition-colors" onClick={() => window.open(`${IMG_BASE_URL}valuation-lightbox.png`, '_blank')}>
+                                        <img 
+                                            src={`${IMG_BASE_URL}valuation-lightbox.png`} 
+                                            alt="估價說明" 
+                                            class="w-full h-32 object-cover rounded-lg mb-2"
+                                        />
+                                        <div class="text-center text-xs text-blue-600 font-medium flex items-center justify-center gap-1">
+                                            <Icon name="zoom-in" size={12} /> 點擊放大
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* 卡片 3 */}
+                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div class="relative z-10">
+                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
+                                    <h3 class="text-xl font-bold text-slate-800 mb-4">房屋選配原則</h3>
+                                    <ul class="space-y-4">
+                                        {[
+                                            {title: "原位次分配", desc: "優先選擇原樓層或相近樓層"},
+                                            {title: "多退少補", desc: "依據選配價值與應分配價值找補"},
+                                            {title: "公開抽籤", desc: "同一戶多人選填時以抽籤決定"}
+                                        ].map((item, i) => (
+                                            <li key={i} class="flex items-start gap-3">
+                                                <div class="mt-1 text-blue-500"><Icon name="check-circle-2" size={16} /></div>
+                                                <div>
+                                                    <strong class="text-slate-800 text-sm block">{item.title}</strong>
+                                                    <span class="text-slate-500 text-xs">{item.desc}</span>
+                                                </div>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 主題 3 (原主題 2)：平面圖說參考
+        const FloorPlans = () => {
+            const plans = [
+                { title: "全區配置圖", desc: "Site Plan", icon: "map" },
+                { title: "標準層平面", desc: "Floor Plan", icon: "layout" },
+                { title: "停車空間", desc: "Parking", icon: "car" },
+            ];
+
+            return (
+                <section id="floorplans" class="py-20 bg-white border-t border-slate-200">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                         <div class="text-center mb-16">
+                            <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 03</span>
+                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">平面圖說參考</h2>
+                            <p class="text-slate-500">詳細建築圖說將於事業計畫核定後正式公告</p>
+                        </div>
+
+                        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                            {plans.map((plan, idx) => (
+                                <div key={idx} class="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all">
+                                    <div class="h-40 bg-slate-100 flex items-center justify-center relative overflow-hidden">
+                                        <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                                        <Icon name={plan.icon} size={48} className="text-slate-300 group-hover:text-blue-500 transition-colors transform group-hover:scale-110 duration-500" />
+                                        <div class="absolute top-3 right-3 px-2 py-1 bg-slate-200 text-slate-500 text-xs rounded font-medium">
+                                            規劃中
+                                        </div>
+                                    </div>
+                                    <div class="p-6 text-center">
+                                        <h3 class="font-bold text-lg text-slate-800">{plan.title}</h3>
+                                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-4">{plan.desc}</p>
+                                        <button class="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-400 rounded-lg text-sm font-medium cursor-not-allowed hover:bg-white transition-colors flex items-center justify-center gap-2">
+                                            <Icon name="lock" size={14} /> 圖面建置中
+                                        </button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // 頁尾
+        const Footer = () => {
+            return (
+                <footer id="contact" class="bg-slate-900 text-slate-300 py-12">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="grid md:grid-cols-2 gap-10 items-center">
+                            {/* Logo 與公司名 */}
+                            <div class="flex items-center gap-6">
+                                <div class="bg-white p-2 rounded-lg shadow-lg">
+                                    <img 
+                                        src={`${IMG_BASE_URL}f-logo.png`} 
+                                        alt="中力都市更新 Logo" 
+                                        class="h-16 w-auto"
+                                        onError={(e) => {e.target.style.display='none'}}
+                                    />
+                                </div>
+                                <div>
+                                    <h3 class="text-white font-bold text-2xl tracking-wide">中力都市更新</h3>
+                                    <p class="text-sm text-slate-400 font-light tracking-widest mt-1">股份有限公司</p>
+                                </div>
+                            </div>
+
+                            {/* 聯絡資訊 */}
+                            <div class="md:text-right space-y-4">
+                                <div class="flex items-center md:justify-end gap-3 group">
+                                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <Icon name="map-pin" size={16} />
+                                    </div>
+                                    <span class="text-slate-300">106 台北市大安區和平東路一段59號4樓</span>
+                                </div>
+                                <div class="flex items-center md:justify-end gap-6 text-sm">
+                                    <div class="flex items-center gap-2">
+                                        <Icon name="phone" size={14} className="text-blue-400" />
+                                        <span>02-2358-1345</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <Icon name="printer" size={14} className="text-blue-400" />
+                                        <span>02-2358-1314</span>
+                                    </div>
+                                </div>
+                                <div class="pt-2">
+                                    <a href="http://www.dyf.com.tw" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors border-b border-transparent hover:border-blue-400 pb-0.5">
+                                        <Icon name="globe" size={14} /> www.dyf.com.tw
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="border-t border-slate-800 mt-10 pt-8 text-center text-xs text-slate-600 flex flex-col md:flex-row justify-center gap-4">
+                            <span>&copy; {new Date().getFullYear()} Zhongli Urban Renewal Co., Ltd. All rights reserved.</span>
+                            <span class="hidden md:inline text-slate-700">|</span>
+                            <span>Design for Urban Regeneration</span>
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        const App = () => {
+            useEffect(() => {
+                lucide.createIcons();
+            }, []);
+
+            return (
+                <div class="antialiased bg-slate-50">
+                    <Navbar />
+                    <Hero />
+                    <Progress />
+                    <Concepts />
+                    <FloorPlans />
+                    <Footer />
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
