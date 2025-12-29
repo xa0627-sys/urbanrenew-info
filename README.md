@@ -59,7 +59,7 @@ urbanrenew-info/
      * 資料夾選擇 /(root)。  
    * 點擊 **Save (儲存)**。  
 3. **等待部署**：  
-   * 等待約 1-3 分鐘，GitHub Actions 完成建置後，您會在該頁面頂端看到您的網站網址 (例如：https://yourname.github.io/urbanrenew-info/)。
+   * 等待約 1-3 分鐘，GitHub Actions 完成建置後，您會在該頁面頂端看到您的網站網址。
 
 ## **📝 最新更新內容**
 
