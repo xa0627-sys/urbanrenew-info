@@ -42,7 +42,7 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body className="bg-slate-50 text-slate-800">
     <div id="root"></div>
 
     <script type="text/babel">
@@ -73,32 +73,32 @@
 
             return (
                 // 修改：移除捲動判斷，直接給予固定的白色背景、陰影與 padding
-                <nav class="fixed top-0 left-0 w-full z-50 bg-white shadow-md py-2">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="flex items-center justify-between h-16">
+                <nav className="fixed top-0 left-0 w-full z-50 bg-white shadow-md py-2">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex items-center justify-between h-16">
                             {/* Logo */}
-                            <div class="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
-                                <div class="bg-white p-1 rounded border border-gray-100 shadow-sm group-hover:shadow transition-shadow">
+                            <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo(0,0)}>
+                                <div className="bg-white p-1 rounded border border-gray-100 shadow-sm group-hover:shadow transition-shadow">
                                     <img 
                                         src={`${IMG_BASE_URL}f-logo.png`} 
                                         alt="Logo" 
-                                        class="h-10 w-auto"
+                                        className="h-10 w-auto"
                                         onError={(e) => {e.target.style.display='none'}}
                                     />
                                 </div>
-                                <div class="flex flex-col">
-                                    <span class="font-bold text-xl text-gray-800 tracking-wide leading-none">中力都市更新[東湖4-7]</span>
-                                    <span class="text-xs text-gray-500 tracking-wider">ZHONGLI URBAN RENEWAL</span>
+                                <div className="flex flex-col">
+                                    <span className="font-bold text-xl text-gray-800 tracking-wide leading-none">中力都市更新[東湖4-7]</span>
+                                    <span className="text-xs text-gray-500 tracking-wider">ZHONGLI URBAN RENEWAL</span>
                                 </div>
                             </div>
                             
                             {/* Desktop Menu */}
-                            <div class="hidden md:flex ml-10 space-x-8 items-center">
+                            <div className="hidden md:flex ml-10 space-x-8 items-center">
                                 {menuItems.map(item => (
                                     <a 
                                         key={item.name}
                                         href={item.href} 
-                                        class={`${item.highlight 
+                                        className={`${item.highlight 
                                             ? 'bg-slate-800 text-white hover:bg-slate-700 px-5 py-2.5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5' 
                                             : 'text-gray-600 hover:text-blue-600 font-medium px-2 py-2 relative after:content-[""] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all hover:after:w-full'} 
                                             text-sm transition-all duration-300`}
@@ -109,8 +109,8 @@
                             </div>
 
                             {/* Mobile menu button */}
-                            <div class="md:hidden">
-                                <button onClick={() => setIsOpen(!isOpen)} class="p-2 text-gray-600 hover:text-blue-600 transition-colors">
+                            <div className="md:hidden">
+                                <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-600 hover:text-blue-600 transition-colors">
                                     <Icon name={isOpen ? "x" : "menu"} size={28} />
                                 </button>
                             </div>
@@ -119,14 +119,14 @@
 
                     {/* Mobile Menu */}
                     {isOpen && (
-                        <div class="md:hidden bg-white border-t absolute w-full shadow-xl">
-                            <div class="px-4 pt-2 pb-6 space-y-2">
+                        <div className="md:hidden bg-white border-t absolute w-full shadow-xl">
+                            <div className="px-4 pt-2 pb-6 space-y-2">
                                 {menuItems.map(item => (
                                     <a 
                                         key={item.name}
                                         href={item.href} 
                                         onClick={() => setIsOpen(false)} 
-                                        class={`block px-4 py-3 rounded-lg font-medium ${item.highlight ? 'bg-slate-800 text-white text-center mt-4' : 'text-gray-700 hover:bg-gray-50'}`}
+                                        className={`block px-4 py-3 rounded-lg font-medium ${item.highlight ? 'bg-slate-800 text-white text-center mt-4' : 'text-gray-700 hover:bg-gray-50'}`}
                                     >
                                         {item.name}
                                     </a>
@@ -143,16 +143,16 @@
             return (
                 // 將 mt-[72px] 改為 mt-[100px] 以避開導覽列的高度 (64px + 32px padding = 96px)
                 // 移除 max-h 限制，確保圖片按比例完整顯示
-                <div class="relative w-full mt-[100px] bg-white">
+                <div className="relative w-full mt-[100px] bg-white">
                     <img 
                         src={`${IMG_BASE_URL}Gemini_Generated_Image_台北東湖耶誕快樂.png`} 
                         alt="台北東湖耶誕快樂" 
-                        class="w-full h-auto object-contain mx-auto block shadow-sm"
+                        className="w-full h-auto object-contain mx-auto block shadow-sm"
                     />
                     <img 
                         src={`${IMG_BASE_URL}Gemini_Generated_Image_HappyNewYear.png`} 
                         alt="新年快樂" 
-                        class="w-full h-auto object-contain mx-auto block shadow-sm"
+                        className="w-full h-auto object-contain mx-auto block shadow-sm"
                     />
                 </div>
             );
@@ -161,43 +161,43 @@
         // 主題 1 (原主題 3)：案件進度及下次會議資訊
         const Progress = () => {
             return (
-                <section id="progress" class="py-16 bg-white relative">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <section id="progress" className="py-16 bg-white relative">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         {/* 標題區 */}
-                        <div class="flex items-center gap-3 mb-10 border-b pb-4 border-gray-100">
-                            <div class="bg-red-600 p-2 rounded-lg text-white shadow-md">
+                        <div className="flex items-center gap-3 mb-10 border-b pb-4 border-gray-100">
+                            <div className="bg-red-600 p-2 rounded-lg text-white shadow-md">
                                 <Icon name="megaphone" size={24} />
                             </div>
-                            <h2 class="text-2xl font-bold text-gray-900">最新公告：案件進度與會議資訊</h2>
+                            <h2 className="text-2xl font-bold text-gray-900">最新公告：案件進度與會議資訊</h2>
                         </div>
 
-                        <div class="grid md:grid-cols-2 gap-8">
+                        <div className="grid md:grid-cols-2 gap-8">
                             {/* 最新公告 */}
-                            <div class="bg-blue-50 rounded-2xl p-8 border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
-                                <div class="flex items-center justify-between mb-6">
-                                    <h3 class="text-xl font-bold text-blue-900 flex items-center gap-2">
+                            <div className="bg-blue-50 rounded-2xl p-8 border border-blue-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div className="flex items-center justify-between mb-6">
+                                    <h3 className="text-xl font-bold text-blue-900 flex items-center gap-2">
                                         <Icon name="calendar-days" size={20} /> 下次會議資訊
                                     </h3>
-                                    <span class="px-3 py-1 bg-blue-200 text-blue-800 text-xs font-bold rounded-full animate-pulse">Coming Soon</span>
+                                    <span className="px-3 py-1 bg-blue-200 text-blue-800 text-xs font-bold rounded-full animate-pulse">Coming Soon</span>
                                 </div>
-                                <div class="space-y-4">
-                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Time</p>
-                                        <p class="font-bold text-lg text-gray-800">115年1月 ~ 2月</p>
+                                <div className="space-y-4">
+                                    <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Time</p>
+                                        <p className="font-bold text-lg text-gray-800">115年1月 ~ 2月</p>
                                     </div>
-                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Location</p>
-                                        <p class="font-bold text-gray-800">115/2/1理事會：臺北市內湖區康樂街150號6樓之1(樂康區民活動中心)</p>
+                                    <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Location</p>
+                                        <p className="font-bold text-gray-800">115/2/1理事會：臺北市內湖區康樂街150號6樓之1(樂康區民活動中心)</p>
                                     </div>
-                                    <div class="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
-                                        <p class="text-xs text-gray-500 uppercase tracking-wide mb-1">Agenda</p>
-                                        <ul class="list-disc pl-5 text-gray-700 text-sm space-y-2">
+                                    <div className="bg-white p-5 rounded-xl shadow-sm border border-blue-100">
+                                        <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Agenda</p>
+                                        <ul className="list-disc pl-5 text-gray-700 text-sm space-y-2">
                                             <li>
-                                                <span class="font-bold text-blue-800 block">115/1月中下旬</span>
+                                                <span className="font-bold text-blue-800 block">115/1月中下旬</span>
                                                 團隊工作會議 (討論平面圖與初步估價)
                                             </li>
                                             <li>
-                                                <span class=115ㄋㄧ-bold text-blue-800 block">115年2月1日(週日)上午9:30 
+                                                <span className=115ㄋㄧ-bold text-blue-800 block">115年2月1日(週日)上午9:30 
                                                 理事會報告 (初步平面與初步估價，確認領銜估價師。)
                                             </li>
                                         </ul>
@@ -206,51 +206,51 @@
                             </div>
 
                             {/* 進度條 */}
-                            <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-                                <h3 class="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
+                            <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
+                                <h3 className="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
                                     <Icon name="trending-up" size={20} /> 目前專案進度
                                 </h3>
-                                <div class="relative pl-4 border-l-2 border-gray-100 space-y-10">
+                                <div className="relative pl-4 border-l-2 border-gray-100 space-y-10">
                                     
                                     {/* 12月底 */}
-                                    <div class="relative">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded mb-2">預計 12月底</span>
-                                        <h4 class="font-bold text-lg text-gray-800">平面圖討論與店面規劃</h4>
-                                        <p class="text-sm text-gray-500 mt-1 leading-relaxed">
+                                    <div className="relative">
+                                        <div className="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
+                                        <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded mb-2">預計 12月底</span>
+                                        <h4 className="font-bold text-lg text-gray-800">平面圖討論與店面規劃</h4>
+                                        <p className="text-sm text-gray-500 mt-1 leading-relaxed">
                                             預計建築師將提供平面圖供地主討論，並同時邀請一樓店面地主討論規劃意見。
                                         </p>
                                         {/* 建築師辛苦的附註 */}
-                                        <div class="mt-3 p-3 bg-orange-50 rounded-lg text-sm text-gray-600 border border-orange-100 flex gap-2">
+                                        <div className="mt-3 p-3 bg-orange-50 rounded-lg text-sm text-gray-600 border border-orange-100 flex gap-2">
                                             <Icon name="info" size={16} className="text-orange-400 flex-shrink-0 mt-0.5" />
-                                            <span class="text-xs">
+                                            <span className="text-xs">
                                                 小編筆記：因為基地規模限制，建築師正絞盡腦汁，力求在「地下室車道規劃」與「樓上管道間一致性」之間取得完美平衡，非常辛苦！
                                             </span>
                                         </div>
                                     </div>
 
                                     {/* 12/9 */}
-                                    <div class="relative opacity-80">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">12/09</span>
-                                        <h4 class="font-bold text-lg text-gray-800">代銷提供回饋</h4>
-                                        <p class="text-sm text-gray-500 mt-1">信義代銷針對初步規劃提供平面圖修改意見。</p>
+                                    <div className="relative opacity-80">
+                                        <div className="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
+                                        <span className="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">12/09</span>
+                                        <h4 className="font-bold text-lg text-gray-800">代銷提供回饋</h4>
+                                        <p className="text-sm text-gray-500 mt-1">信義代銷針對初步規劃提供平面圖修改意見。</p>
                                     </div>
 
                                     {/* 11/21 */}
-                                    <div class="relative opacity-60">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/21</span>
-                                        <h4 class="font-bold text-lg text-gray-800">市場性評估</h4>
-                                        <p class="text-sm text-gray-500 mt-1">提供初步規畫給信義代銷協助評估市場性。</p>
+                                    <div className="relative opacity-60">
+                                        <div className="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
+                                        <span className="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/21</span>
+                                        <h4 className="font-bold text-lg text-gray-800">市場性評估</h4>
+                                        <p className="text-sm text-gray-500 mt-1">提供初步規畫給信義代銷協助評估市場性。</p>
                                     </div>
 
                                      {/* 11/2 */}
-                                    <div class="relative opacity-40">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-200 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/02</span>
-                                        <h4 class="font-bold text-lg text-gray-800">啟動建築規劃</h4>
-                                        <p class="text-sm text-gray-500 mt-1">會員大會後，建築師依議決結論，著手發展五拚與六拚的平面圖。</p>
+                                    <div className="relative opacity-40">
+                                        <div className="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-200 border-4 border-white"></div>
+                                        <span className="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/02</span>
+                                        <h4 className="font-bold text-lg text-gray-800">啟動建築規劃</h4>
+                                        <p className="text-sm text-gray-500 mt-1">會員大會後，建築師依議決結論，著手發展五拚與六拚的平面圖。</p>
                                     </div>
                                 </div>
                             </div>
@@ -335,55 +335,55 @@
             const activeSlide = slides[activeSlideIndex];
 
             return (
-                <section id="concepts" class="py-20 bg-slate-50 border-t border-slate-200">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="text-center mb-16">
-                            <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 02</span>
-                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">你該知道的都更觀念</h2>
-                            <div class="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
+                <section id="concepts" className="py-20 bg-slate-50 border-t border-slate-200">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="text-center mb-16">
+                            <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 02</span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">你該知道的都更觀念</h2>
+                            <div className="w-20 h-1.5 bg-blue-600 mx-auto rounded-full"></div>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-8">
+                        <div className="grid md:grid-cols-3 gap-8">
                             {/* 卡片 1 */}
-                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
-                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
-                                <div class="relative z-10">
-                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
-                                    <h3 class="text-xl font-bold text-slate-800 mb-4">都更兩本書</h3>
-                                    <div class="space-y-4 text-slate-600">
+                            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div className="relative z-10">
+                                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">1</div>
+                                    <h3 className="text-xl font-bold text-slate-800 mb-4">都更兩本書</h3>
+                                    <div className="space-y-4 text-slate-600">
                                         <div>
-                                            <strong class="text-blue-700 block mb-1">事業計畫</strong>
-                                            <p class="text-sm">決定房子「蓋成什麼樣子」。包含建築設計、容積獎勵與財務計畫。</p>
+                                            <strong className="text-blue-700 block mb-1">事業計畫</strong>
+                                            <p className="text-sm">決定房子「蓋成什麼樣子」。包含建築設計、容積獎勵與財務計畫。</p>
                                         </div>
-                                        <div class="border-t border-slate-100 pt-3">
-                                            <strong class="text-blue-700 block mb-1">權利變換計畫</strong>
-                                            <p class="text-sm">決定每位地主「分回多少價值」。透過估價計算土地與建物價值。</p>
+                                        <div className="border-t border-slate-100 pt-3">
+                                            <strong className="text-blue-700 block mb-1">權利變換計畫</strong>
+                                            <p className="text-sm">決定每位地主「分回多少價值」。透過估價計算土地與建物價值。</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
                             {/* 卡片 2 */}
-                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
-                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
-                                <div class="relative z-10 h-full flex flex-col">
-                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
-                                    <h3 class="text-xl font-bold text-slate-800 mb-4">權利變換估價</h3>
-                                    <p class="text-slate-600 text-sm mb-6 flex-grow">
+                            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div className="relative z-10 h-full flex flex-col">
+                                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">2</div>
+                                    <h3 className="text-xl font-bold text-slate-800 mb-4">權利變換估價</h3>
+                                    <p className="text-slate-600 text-sm mb-6 flex-grow">
                                         委託三家專業估價師事務所，依據規範進行價值查估。所有報告皆提送審議會審查，確保公開透明。
                                     </p>
                                     <button
                                         type="button"
                                         onClick={() => openLightbox(0)}
                                         aria-label="開啟權利變換估價投影片"
-                                        class="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-pointer group-hover:border-blue-300 transition-colors text-left"
+                                        className="bg-slate-50 p-2 rounded-xl border border-slate-200 cursor-pointer group-hover:border-blue-300 transition-colors text-left"
                                     >
                                         <img
                                             src={`${THEME2_PARAGRAPH2_BASE_URL}1.png`}
                                             alt="估價說明"
-                                            class="w-full h-32 object-cover rounded-lg mb-2"
+                                            className="w-full h-32 object-cover rounded-lg mb-2"
                                         />
-                                        <div class="text-center text-xs text-blue-600 font-medium flex items-center justify-center gap-1">
+                                        <div className="text-center text-xs text-blue-600 font-medium flex items-center justify-center gap-1">
                                             <Icon name="layers" size={12} /> 點擊開啟投影片
                                         </div>
                                     </button>
@@ -391,22 +391,22 @@
                             </div>
 
                             {/* 卡片 3 */}
-                            <div class="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
-                                <div class="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
-                                <div class="relative z-10">
-                                    <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
-                                    <h3 class="text-xl font-bold text-slate-800 mb-4">房屋選配原則</h3>
-                                    <ul class="space-y-4">
+                            <div className="bg-white rounded-2xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 relative overflow-hidden group">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-blue-50 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+                                <div className="relative z-10">
+                                    <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center font-bold text-xl mb-6">3</div>
+                                    <h3 className="text-xl font-bold text-slate-800 mb-4">房屋選配原則</h3>
+                                    <ul className="space-y-4">
                                         {[
                                             {title: "原位次分配", desc: "優先選擇原樓層或相近樓層"},
                                             {title: "多退少補", desc: "依據選配價值與應分配價值找補"},
                                             {title: "公開抽籤", desc: "同一戶多人選填時以抽籤決定"}
                                         ].map((item, i) => (
-                                            <li key={i} class="flex items-start gap-3">
-                                                <div class="mt-1 text-blue-500"><Icon name="check-circle-2" size={16} /></div>
+                                            <li key={i} className="flex items-start gap-3">
+                                                <div className="mt-1 text-blue-500"><Icon name="check-circle-2" size={16} /></div>
                                                 <div>
-                                                    <strong class="text-slate-800 text-sm block">{item.title}</strong>
-                                                    <span class="text-slate-500 text-xs">{item.desc}</span>
+                                                    <strong className="text-slate-800 text-sm block">{item.title}</strong>
+                                                    <span className="text-slate-500 text-xs">{item.desc}</span>
                                                 </div>
                                             </li>
                                         ))}
@@ -417,20 +417,20 @@
 
                         {isLightboxOpen && (
                             <div
-                                class="fixed inset-0 z-50 bg-slate-900/80 flex flex-col"
+                                className="fixed inset-0 z-50 bg-slate-900/80 flex flex-col"
                                 role="dialog"
                                 aria-modal="true"
                                 aria-label="權利變換估價投影片"
                             >
-                                <div class="flex items-center justify-between px-4 py-3 text-slate-100">
-                                    <div class="flex items-center gap-3">
-                                        <span class="text-xs uppercase tracking-wider text-slate-300">段落 2</span>
-                                        <h4 class="text-sm font-semibold">自主都市更新權利變換估價</h4>
+                                <div className="flex items-center justify-between px-4 py-3 text-slate-100">
+                                    <div className="flex items-center gap-3">
+                                        <span className="text-xs uppercase tracking-wider text-slate-300">段落 2</span>
+                                        <h4 className="text-sm font-semibold">自主都市更新權利變換估價</h4>
                                     </div>
                                     <button
                                         type="button"
                                         onClick={closeLightbox}
-                                        class="p-2 rounded-full hover:bg-slate-700/70 transition"
+                                        className="p-2 rounded-full hover:bg-slate-700/70 transition"
                                         aria-label="關閉投影片"
                                     >
                                         <Icon name="x" size={20} />
@@ -438,42 +438,42 @@
                                 </div>
 
                                 <div
-                                    class="flex-1 px-4 pb-6 flex flex-col items-center justify-center"
+                                    className="flex-1 px-4 pb-6 flex flex-col items-center justify-center"
                                     onTouchStart={handleTouchStart}
                                     onTouchEnd={handleTouchEnd}
                                 >
-                                    <div class="w-full max-w-4xl flex flex-col items-center gap-4">
-                                        <div class="w-full bg-slate-800/40 rounded-2xl p-3 md:p-6 flex items-center justify-center">
+                                    <div className="w-full max-w-4xl flex flex-col items-center gap-4">
+                                        <div className="w-full bg-slate-800/40 rounded-2xl p-3 md:p-6 flex items-center justify-center">
                                             <img
                                                 src={activeSlide.src}
                                                 alt={`投影片 ${activeSlide.id}`}
-                                                class="w-full max-h-[70vh] object-contain rounded-xl shadow-lg"
+                                                className="w-full max-h-[70vh] object-contain rounded-xl shadow-lg"
                                             />
                                         </div>
-                                        <div class="flex flex-wrap items-center justify-between gap-4 w-full text-slate-200 text-sm">
+                                        <div className="flex flex-wrap items-center justify-between gap-4 w-full text-slate-200 text-sm">
                                             <span>投影片 {activeSlide.id} / {slides.length}</span>
-                                            <div class="flex items-center gap-3">
+                                            <div className="flex items-center gap-3">
                                                 <button
                                                     type="button"
                                                     onClick={goPrev}
-                                                    class="px-4 py-2 rounded-full bg-slate-700/70 hover:bg-slate-600 transition text-xs font-semibold"
+                                                    className="px-4 py-2 rounded-full bg-slate-700/70 hover:bg-slate-600 transition text-xs font-semibold"
                                                 >
-                                                    <span class="inline-flex items-center gap-1">
+                                                    <span className="inline-flex items-center gap-1">
                                                         <Icon name="chevron-left" size={14} /> 上一頁
                                                     </span>
                                                 </button>
                                                 <button
                                                     type="button"
                                                     onClick={goNext}
-                                                    class="px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-400 transition text-xs font-semibold"
+                                                    className="px-4 py-2 rounded-full bg-blue-500 hover:bg-blue-400 transition text-xs font-semibold"
                                                 >
-                                                    <span class="inline-flex items-center gap-1">
+                                                    <span className="inline-flex items-center gap-1">
                                                         下一頁 <Icon name="chevron-right" size={14} />
                                                     </span>
                                                 </button>
                                             </div>
                                         </div>
-                                        <p class="text-xs text-slate-400">
+                                        <p className="text-xs text-slate-400">
                                             可左右滑動切換投影片，直立時上下滑動可瀏覽頁面內容。
                                         </p>
                                     </div>
@@ -494,28 +494,28 @@
             ];
 
             return (
-                <section id="floorplans" class="py-20 bg-white border-t border-slate-200">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div class="text-center mb-16">
-                            <span class="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 03</span>
-                            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">平面圖說參考</h2>
-                            <p class="text-slate-500">詳細建築圖說將於事業計畫核定後正式公告</p>
+                <section id="floorplans" className="py-20 bg-white border-t border-slate-200">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                         <div className="text-center mb-16">
+                            <span className="text-blue-600 font-bold tracking-wider uppercase text-sm">Theme 03</span>
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mt-2 mb-4">平面圖說參考</h2>
+                            <p className="text-slate-500">詳細建築圖說將於事業計畫核定後正式公告</p>
                         </div>
 
-                        <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                             {plans.map((plan, idx) => (
-                                <div key={idx} class="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all">
-                                    <div class="h-40 bg-slate-100 flex items-center justify-center relative overflow-hidden">
-                                        <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity"></div>
+                                <div key={idx} className="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all">
+                                    <div className="h-40 bg-slate-100 flex items-center justify-center relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity"></div>
                                         <Icon name={plan.icon} size={48} className="text-slate-300 group-hover:text-blue-500 transition-colors transform group-hover:scale-110 duration-500" />
-                                        <div class="absolute top-3 right-3 px-2 py-1 bg-slate-200 text-slate-500 text-xs rounded font-medium">
+                                        <div className="absolute top-3 right-3 px-2 py-1 bg-slate-200 text-slate-500 text-xs rounded font-medium">
                                             規劃中
                                         </div>
                                     </div>
-                                    <div class="p-6 text-center">
-                                        <h3 class="font-bold text-lg text-slate-800">{plan.title}</h3>
-                                        <p class="text-slate-400 text-xs uppercase tracking-wider mb-4">{plan.desc}</p>
-                                        <button class="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-400 rounded-lg text-sm font-medium cursor-not-allowed hover:bg-white transition-colors flex items-center justify-center gap-2">
+                                    <div className="p-6 text-center">
+                                        <h3 className="font-bold text-lg text-slate-800">{plan.title}</h3>
+                                        <p className="text-slate-400 text-xs uppercase tracking-wider mb-4">{plan.desc}</p>
+                                        <button className="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-400 rounded-lg text-sm font-medium cursor-not-allowed hover:bg-white transition-colors flex items-center justify-center gap-2">
                                             <Icon name="lock" size={14} /> 圖面建置中
                                         </button>
                                     </div>
@@ -530,53 +530,53 @@
         // 頁尾
         const Footer = () => {
             return (
-                <footer id="contact" class="bg-slate-900 text-slate-300 py-12">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div class="grid md:grid-cols-2 gap-10 items-center">
+                <footer id="contact" className="bg-slate-900 text-slate-300 py-12">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="grid md:grid-cols-2 gap-10 items-center">
                             {/* Logo 與公司名 */}
-                            <div class="flex items-center gap-6">
-                                <div class="bg-white p-2 rounded-lg shadow-lg">
+                            <div className="flex items-center gap-6">
+                                <div className="bg-white p-2 rounded-lg shadow-lg">
                                     <img 
                                         src={`${IMG_BASE_URL}f-logo.png`} 
                                         alt="中力都市更新 Logo" 
-                                        class="h-16 w-auto"
+                                        className="h-16 w-auto"
                                         onError={(e) => {e.target.style.display='none'}}
                                     />
                                 </div>
                                 <div>
-                                    <h3 class="text-white font-bold text-2xl tracking-wide">中力都市更新</h3>
-                                    <p class="text-sm text-slate-400 font-light tracking-widest mt-1">股份有限公司</p>
+                                    <h3 className="text-white font-bold text-2xl tracking-wide">中力都市更新</h3>
+                                    <p className="text-sm text-slate-400 font-light tracking-widest mt-1">股份有限公司</p>
                                 </div>
                             </div>
 
                             {/* 聯絡資訊 */}
-                            <div class="md:text-right space-y-4">
-                                <div class="flex items-center md:justify-end gap-3 group">
-                                    <div class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                            <div className="md:text-right space-y-4">
+                                <div className="flex items-center md:justify-end gap-3 group">
+                                    <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                         <Icon name="map-pin" size={16} />
                                     </div>
-                                    <span class="text-slate-300">106 台北市大安區和平東路一段59號4樓</span>
+                                    <span className="text-slate-300">106 台北市大安區和平東路一段59號4樓</span>
                                 </div>
-                                <div class="flex items-center md:justify-end gap-6 text-sm">
-                                    <div class="flex items-center gap-2">
+                                <div className="flex items-center md:justify-end gap-6 text-sm">
+                                    <div className="flex items-center gap-2">
                                         <Icon name="phone" size={14} className="text-blue-400" />
                                         <span>02-2358-1345</span>
                                     </div>
-                                    <div class="flex items-center gap-2">
+                                    <div className="flex items-center gap-2">
                                         <Icon name="printer" size={14} className="text-blue-400" />
                                         <span>02-2358-1314</span>
                                     </div>
                                 </div>
-                                <div class="pt-2">
-                                    <a href="http://www.dyf.com.tw" target="_blank" class="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors border-b border-transparent hover:border-blue-400 pb-0.5">
+                                <div className="pt-2">
+                                    <a href="http://www.dyf.com.tw" target="_blank" className="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors border-b border-transparent hover:border-blue-400 pb-0.5">
                                         <Icon name="globe" size={14} /> www.dyf.com.tw
                                     </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="border-t border-slate-800 mt-10 pt-8 text-center text-xs text-slate-600 flex flex-col md:flex-row justify-center gap-4">
+                        <div className="border-t border-slate-800 mt-10 pt-8 text-center text-xs text-slate-600 flex flex-col md:flex-row justify-center gap-4">
                             <span>&copy; {new Date().getFullYear()} Zhongli Urban Renewal Co., Ltd. All rights reserved.</span>
-                            <span class="hidden md:inline text-slate-700">|</span>
+                            <span className="hidden md:inline text-slate-700">|</span>
                             <span>Design for Urban Regeneration</span>
                         </div>
                     </div>
@@ -590,7 +590,7 @@
             }, []);
 
             return (
-                <div class="antialiased bg-slate-50">
+                <div className="antialiased bg-slate-50">
                     <Navbar />
                     <Hero />
                     <Progress />
