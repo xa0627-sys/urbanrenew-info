@@ -17,6 +17,9 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Mermaid (Gantt/Flowchart) -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -255,8 +258,139 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="mt-12 bg-slate-50 border border-slate-200 rounded-3xl p-6 md:p-10 shadow-sm">
+                            <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+                                <div>
+                                    <p class="text-xs uppercase tracking-widest text-blue-600 font-semibold">Schedule View</p>
+                                    <h3 class="text-2xl font-bold text-slate-900 mt-1">115年(2026) 自主都更甘特圖</h3>
+                                    <p class="text-sm text-slate-600 mt-2">
+                                        直接修改下方內容即可調整日期、增刪節點，並可切換日期縮放比例。
+                                    </p>
+                                </div>
+                                <div class="flex flex-wrap items-center gap-3 text-xs text-slate-600">
+                                    <span class="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                                        <Icon name="calendar-range" size={14} /> 日期格式：YYYY-MM-DD
+                                    </span>
+                                    <span class="inline-flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200">
+                                        <Icon name="mouse-pointer-click" size={14} /> 可直接編輯文字
+                                    </span>
+                                </div>
+                            </div>
+                            <ScheduleGantt />
+                        </div>
                     </div>
                 </section>
+            );
+        };
+
+        const ScheduleGantt = () => {
+            const defaultBody = `section 第一階段：溝通、決策與春節模擬
+系統基礎建設 :a1, 2026-01-06, 9d
+團隊工作會議 :a2, 2026-01-15, 6d
+1F 店面拜訪 :a3, 2026-01-20, 12d
+理事會 :milestone, a4, 2026-02-01, 1d
+模擬系統衝刺 :a5, 2026-02-02, 6d
+會員大會 1 :milestone, a6, 2026-02-08, 1d
+選配數據建置 :a7, 2026-02-09, 4d
+農曆春節 :crit, a8, 2026-02-13, 10d
+數據分析 & 擬稿 :a9, 2026-02-23, 6d
+section 第二階段：事業計畫確認與公聽會
+寄發大會通知 :milestone, b1, 2026-03-01, 1d
+正式估價匯入 :b2, 2026-03-01, 14d
+會員大會 2 :milestone, b3, 2026-03-15, 1d
+寄發公聽會通知 :milestone, b4, 2026-03-19, 1d
+自辦公聽會 :milestone, b5, 2026-03-29, 1d
+意見整理 :b6, 2026-03-30, 2d
+section 第三階段：選配、抽籤與最終定案
+選配開始 :milestone, c1, 2026-04-01, 1d
+選配期間 (35天) :c2, 2026-04-01, 35d
+選配截止 :milestone, c3, 2026-05-05, 1d
+寄發抽籤通知 :c4, 2026-05-06, 2d
+公開抽籤會 :milestone, c5, 2026-05-17, 1d
+權變計畫製作 :c6, 2026-05-18, 6d
+會員大會 3 :milestone, c7, 2026-05-24, 1d
+section 第四階段：報核衝刺
+文書作業期 :d1, 2026-06-01, 25d
+正式掛件報核 :milestone, d2, 2026-06-26, 1d`;
+            const [zoom, setZoom] = useState("week");
+            const [bodyText, setBodyText] = useState(defaultBody);
+            const chartRef = useRef(null);
+            const chartIdRef = useRef(`gantt-${Math.random().toString(36).slice(2)}`);
+
+            const header = `gantt
+title 115年(2026) 自主都更全案管理與系統開發時程表
+dateFormat  YYYY-MM-DD
+axisFormat  ${zoom === "week" ? "%m/%d" : "%Y-%m"}
+tickInterval ${zoom === "week" ? "1week" : "1month"}`;
+
+            const ganttSource = `${header}\n${bodyText}`;
+
+            useEffect(() => {
+                if (!window.mermaid || !chartRef.current) {
+                    return;
+                }
+                window.mermaid.initialize({
+                    startOnLoad: false,
+                    theme: "neutral",
+                    gantt: { barHeight: 22, barGap: 6, topPadding: 24, leftPadding: 110 },
+                });
+                window.mermaid
+                    .render(chartIdRef.current, ganttSource)
+                    .then(({ svg }) => {
+                        chartRef.current.innerHTML = svg;
+                    })
+                    .catch((error) => {
+                        chartRef.current.innerHTML = `<pre class="text-red-600 text-xs whitespace-pre-wrap">${error}</pre>`;
+                    });
+            }, [ganttSource]);
+
+            return (
+                <div class="grid lg:grid-cols-[1fr_1.2fr] gap-6 items-start">
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 md:p-6 shadow-sm">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
+                                <Icon name="file-edit" size={18} /> 可編輯資料區
+                            </h4>
+                            <div class="flex items-center gap-2 text-xs">
+                                <span class="text-slate-500">縮放</span>
+                                <button
+                                    type="button"
+                                    onClick={() => setZoom("week")}
+                                    class={`px-3 py-1 rounded-full border text-xs font-semibold ${zoom === "week" ? "bg-blue-600 border-blue-600 text-white" : "bg-white border-slate-200 text-slate-600 hover:border-blue-300"}`}
+                                >
+                                    週
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setZoom("month")}
+                                    class={`px-3 py-1 rounded-full border text-xs font-semibold ${zoom === "month" ? "bg-blue-600 border-blue-600 text-white" : "bg-white border-slate-200 text-slate-600 hover:border-blue-300"}`}
+                                >
+                                    月
+                                </button>
+                            </div>
+                        </div>
+                        <textarea
+                            class="w-full min-h-[420px] border border-slate-200 rounded-xl p-4 text-xs font-mono text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            value={bodyText}
+                            onChange={(event) => setBodyText(event.target.value)}
+                            spellCheck="false"
+                        />
+                        <div class="mt-4 text-xs text-slate-500 space-y-2">
+                            <p>格式範例：<code class="bg-slate-100 px-1 rounded">任務名稱 :id, 2026-01-06, 9d</code></p>
+                            <p>新增段落：<code class="bg-slate-100 px-1 rounded">section 新階段名稱</code></p>
+                        </div>
+                    </div>
+                    <div class="bg-white border border-slate-200 rounded-2xl p-4 md:p-6 shadow-sm overflow-auto">
+                        <div class="flex items-center justify-between mb-4">
+                            <h4 class="font-semibold text-slate-800 flex items-center gap-2">
+                                <Icon name="chart-gantt" size={18} /> 即時甘特圖預覽
+                            </h4>
+                            <span class="text-xs text-slate-500">變更內容後即時更新</span>
+                        </div>
+                        <div ref={chartRef} class="min-h-[420px] w-full"></div>
+                    </div>
+                </div>
             );
         };
 
