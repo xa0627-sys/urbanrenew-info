@@ -341,21 +341,26 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                 if (existingTop) {
                     existingTop.remove();
                 }
+                const axisGroups = Array.from(svg.querySelectorAll("g.axis"));
+                if (!axisGroups.length) {
+                    return;
+                }
                 const axisGroup =
-                    svg.querySelector("g.axis") ||
-                    svg.querySelector("g[class*='axis']");
+                    axisGroups.find((group) =>
+                        Array.from(group.querySelectorAll("text")).some((text) =>
+                            /\d/.test(text.textContent)
+                        )
+                    ) || axisGroups[axisGroups.length - 1];
                 if (!axisGroup) {
                     return;
                 }
                 const clone = axisGroup.cloneNode(true);
                 clone.classList.add("axis--top");
-                const bbox = axisGroup.getBBox();
                 const transform = axisGroup.getAttribute("transform") || "";
                 const match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
                 const x = match ? parseFloat(match[1]) : 0;
-                const desiredY = 24;
-                const offset = desiredY - bbox.y;
-                clone.setAttribute("transform", `translate(${x}, ${offset})`);
+                const desiredY = 28;
+                clone.setAttribute("transform", `translate(${x}, ${desiredY})`);
                 svg.prepend(clone);
             };
 
