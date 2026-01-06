@@ -329,6 +329,36 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
 
             const ganttSource = `${header}\n${bodyText}`;
 
+            const addTopAxis = (container) => {
+                if (!container) {
+                    return;
+                }
+                const svg = container.querySelector("svg");
+                if (!svg) {
+                    return;
+                }
+                const existingTop = svg.querySelector(".axis--top");
+                if (existingTop) {
+                    existingTop.remove();
+                }
+                const axisGroup =
+                    svg.querySelector("g.axis") ||
+                    svg.querySelector("g[class*='axis']");
+                if (!axisGroup) {
+                    return;
+                }
+                const clone = axisGroup.cloneNode(true);
+                clone.classList.add("axis--top");
+                const bbox = axisGroup.getBBox();
+                const transform = axisGroup.getAttribute("transform") || "";
+                const match = transform.match(/translate\(([^,]+),\s*([^)]+)\)/);
+                const x = match ? parseFloat(match[1]) : 0;
+                const desiredY = 24;
+                const offset = desiredY - bbox.y;
+                clone.setAttribute("transform", `translate(${x}, ${offset})`);
+                svg.prepend(clone);
+            };
+
             useEffect(() => {
                 if (!window.mermaid || !chartRef.current) {
                     return;
@@ -342,6 +372,7 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                     .render(chartIdRef.current, ganttSource)
                     .then(({ svg }) => {
                         chartRef.current.innerHTML = svg;
+                        addTopAxis(chartRef.current);
                     })
                     .catch((error) => {
                         chartRef.current.innerHTML = `<pre class="text-red-600 text-xs whitespace-pre-wrap">${error}</pre>`;
@@ -361,6 +392,7 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                     .render(modalChartIdRef.current, ganttSource)
                     .then(({ svg }) => {
                         modalChartRef.current.innerHTML = svg;
+                        addTopAxis(modalChartRef.current);
                     })
                     .catch((error) => {
                         modalChartRef.current.innerHTML = `<pre class="text-red-600 text-xs whitespace-pre-wrap">${error}</pre>`;
