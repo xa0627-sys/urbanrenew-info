@@ -315,8 +315,11 @@ section 第四階段：報核衝刺
 正式掛件報核 :milestone, d2, 2026-06-26, 1d`;
             const [zoom, setZoom] = useState("week");
             const [bodyText, setBodyText] = useState(defaultBody);
+            const [isExpanded, setIsExpanded] = useState(false);
             const chartRef = useRef(null);
+            const modalChartRef = useRef(null);
             const chartIdRef = useRef(`gantt-${Math.random().toString(36).slice(2)}`);
+            const modalChartIdRef = useRef(`gantt-modal-${Math.random().toString(36).slice(2)}`);
 
             const header = `gantt
 title 115年(2026) 自主都更全案管理與系統開發時程表
@@ -344,6 +347,25 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                         chartRef.current.innerHTML = `<pre class="text-red-600 text-xs whitespace-pre-wrap">${error}</pre>`;
                     });
             }, [ganttSource]);
+
+            useEffect(() => {
+                if (!isExpanded || !window.mermaid || !modalChartRef.current) {
+                    return;
+                }
+                window.mermaid.initialize({
+                    startOnLoad: false,
+                    theme: "neutral",
+                    gantt: { barHeight: 24, barGap: 6, topPadding: 30, leftPadding: 120 },
+                });
+                window.mermaid
+                    .render(modalChartIdRef.current, ganttSource)
+                    .then(({ svg }) => {
+                        modalChartRef.current.innerHTML = svg;
+                    })
+                    .catch((error) => {
+                        modalChartRef.current.innerHTML = `<pre class="text-red-600 text-xs whitespace-pre-wrap">${error}</pre>`;
+                    });
+            }, [ganttSource, isExpanded]);
 
             return (
                 <div class="grid lg:grid-cols-[1fr_1.2fr] gap-6 items-start">
@@ -386,10 +408,50 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                             <h4 class="font-semibold text-slate-800 flex items-center gap-2">
                                 <Icon name="chart-gantt" size={18} /> 即時甘特圖預覽
                             </h4>
-                            <span class="text-xs text-slate-500">變更內容後即時更新</span>
+                            <div class="flex items-center gap-2 text-xs text-slate-500">
+                                <span>點選可放大</span>
+                                <button
+                                    type="button"
+                                    onClick={() => setIsExpanded(true)}
+                                    class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition"
+                                >
+                                    <Icon name="maximize-2" size={12} /> 放大
+                                </button>
+                            </div>
                         </div>
-                        <div ref={chartRef} class="min-h-[420px] w-full"></div>
+                        <button
+                            type="button"
+                            onClick={() => setIsExpanded(true)}
+                            class="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 rounded-xl"
+                            aria-label="放大甘特圖"
+                        >
+                            <div ref={chartRef} class="min-h-[420px] w-full"></div>
+                        </button>
                     </div>
+
+                    {isExpanded && (
+                        <div class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/70 px-4 py-6">
+                            <div class="w-full max-w-6xl bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden">
+                                <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+                                    <div>
+                                        <p class="text-xs uppercase tracking-widest text-blue-600 font-semibold">Expanded View</p>
+                                        <h5 class="text-lg font-semibold text-slate-800">甘特圖放大檢視</h5>
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => setIsExpanded(false)}
+                                        class="p-2 rounded-full hover:bg-slate-100 transition"
+                                        aria-label="關閉放大檢視"
+                                    >
+                                        <Icon name="x" size={18} />
+                                    </button>
+                                </div>
+                                <div class="p-6 overflow-auto max-h-[75vh]">
+                                    <div ref={modalChartRef} class="min-h-[520px] w-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         };
