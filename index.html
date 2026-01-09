@@ -209,53 +209,53 @@
                                 </div>
                             </div>
 
-                            {/* 進度條 */}
+                            {/* 進度圖表 */}
                             <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm">
-                                <h3 class="text-xl font-bold text-gray-900 mb-8 flex items-center gap-2">
-                                    <Icon name="trending-up" size={20} /> 目前專案進度
-                                </h3>
-                                <div class="relative pl-4 border-l-2 border-gray-100 space-y-10">
-                                    
-                                    {/* 12月底 */}
-                                    <div class="relative">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-bold rounded mb-2">預計 12月底</span>
-                                        <h4 class="font-bold text-lg text-gray-800">平面圖討論與店面規劃</h4>
-                                        <p class="text-sm text-gray-500 mt-1 leading-relaxed">
-                                            預計建築師將提供平面圖供地主討論，並同時邀請一樓店面地主討論規劃意見。
+                                <div class="flex flex-col gap-2 mb-6">
+                                    <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                                        <Icon name="trending-up" size={20} /> 目前專案進度
+                                    </h3>
+                                    <p class="text-sm text-gray-500">
+                                        進度更新採用甘特圖來源，並支援行動裝置瀏覽。
+                                    </p>
+                                </div>
+                                <div class="relative w-full rounded-2xl border border-gray-100 shadow-inner bg-slate-50 hidden sm:block">
+                                    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/70 pointer-events-none"></div>
+                                    <iframe
+                                        title="都市更新專案甘特圖"
+                                        src="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
+                                        class="w-full h-[520px] sm:h-[600px] lg:h-[680px]"
+                                        loading="lazy"
+                                    ></iframe>
+                                </div>
+                                <div class="sm:hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
+                                    <div class="flex flex-col items-center gap-3 text-slate-600">
+                                        <Icon name="maximize-2" size={28} className="text-slate-500" />
+                                        <p class="text-sm">
+                                            手機版為了閱讀清楚，甘特圖改為另開頁面顯示。
                                         </p>
-                                        {/* 建築師辛苦的附註 */}
-                                        <div class="mt-3 p-3 bg-orange-50 rounded-lg text-sm text-gray-600 border border-orange-100 flex gap-2">
-                                            <Icon name="info" size={16} className="text-orange-400 flex-shrink-0 mt-0.5" />
-                                            <span class="text-xs">
-                                                小編筆記：因為基地規模限制，建築師正絞盡腦汁，力求在「地下室車道規劃」與「樓上管道間一致性」之間取得完美平衡，非常辛苦！
-                                            </span>
-                                        </div>
                                     </div>
-
-                                    {/* 12/9 */}
-                                    <div class="relative opacity-80">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">12/09</span>
-                                        <h4 class="font-bold text-lg text-gray-800">代銷提供回饋</h4>
-                                        <p class="text-sm text-gray-500 mt-1">信義代銷針對初步規劃提供平面圖修改意見。</p>
-                                    </div>
-
-                                    {/* 11/21 */}
-                                    <div class="relative opacity-60">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-300 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/21</span>
-                                        <h4 class="font-bold text-lg text-gray-800">市場性評估</h4>
-                                        <p class="text-sm text-gray-500 mt-1">提供初步規畫給信義代銷協助評估市場性。</p>
-                                    </div>
-
-                                     {/* 11/2 */}
-                                    <div class="relative opacity-40">
-                                        <div class="absolute -left-[21px] top-1 w-4 h-4 rounded-full bg-gray-200 border-4 border-white"></div>
-                                        <span class="inline-block px-2 py-0.5 bg-gray-100 text-gray-500 text-xs font-bold rounded mb-2">11/02</span>
-                                        <h4 class="font-bold text-lg text-gray-800">啟動建築規劃</h4>
-                                        <p class="text-sm text-gray-500 mt-1">會員大會後，建築師依議決結論，著手發展五拚與六拚的平面圖。</p>
-                                    </div>
+                                    <a
+                                        href="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-slate-800 px-4 py-2 text-white text-xs font-semibold shadow hover:bg-slate-700 transition"
+                                    >
+                                        <Icon name="external-link" size={14} /> 開啟完整甘特圖
+                                    </a>
+                                </div>
+                                <div class="mt-4 hidden sm:flex sm:items-center sm:justify-between gap-3 text-sm">
+                                    <span class="text-gray-500">
+                                        若圖表無法顯示，請使用右側連結查看完整版本。
+                                    </span>
+                                    <a
+                                        href="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="inline-flex items-center justify-center gap-2 rounded-full bg-slate-800 px-4 py-2 text-white text-xs font-semibold shadow hover:bg-slate-700 transition"
+                                    >
+                                        <Icon name="external-link" size={14} /> 開啟完整甘特圖
+                                    </a>
                                 </div>
                             </div>
                         </div>
