@@ -681,14 +681,14 @@
                                     </div>
                                 </div>
                                 <div
-                                    class="relative flex-1 bg-slate-100 overflow-hidden"
+                                    class="relative flex-1 bg-slate-100 min-h-[70vh] overflow-hidden"
                                     onWheel={handleWheel}
                                     onMouseDown={handleMouseDown}
                                     onMouseMove={handleMouseMove}
                                     onMouseUp={handleMouseUp}
                                     onMouseLeave={handleMouseUp}
                                 >
-                                    <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="absolute inset-0 flex items-center justify-center" w-full h-full>
                                         <img
                                             src={currentItem.image}
                                             alt={`${currentItem.planTitle} ${currentItem.label}`}
