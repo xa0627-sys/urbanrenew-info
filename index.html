@@ -316,6 +316,9 @@ section 第四階段：報核衝刺
             const [zoom, setZoom] = useState("week");
             const [bodyText, setBodyText] = useState(defaultBody);
             const [isExpanded, setIsExpanded] = useState(false);
+            const [passwordInput, setPasswordInput] = useState("");
+            const [isUnlocked, setIsUnlocked] = useState(false);
+            const [passwordError, setPasswordError] = useState("");
             const chartRef = useRef(null);
             const modalChartRef = useRef(null);
             const chartIdRef = useRef(`gantt-${Math.random().toString(36).slice(2)}`);
@@ -328,6 +331,16 @@ axisFormat  ${zoom === "week" ? "%m/%d" : "%Y-%m"}
 tickInterval ${zoom === "week" ? "1week" : "1month"}`;
 
             const ganttSource = `${header}\n${bodyText}`;
+
+            const handleUnlock = () => {
+                if (passwordInput === "alfasafe") {
+                    setIsUnlocked(true);
+                    setPasswordError("");
+                } else {
+                    setIsUnlocked(false);
+                    setPasswordError("密碼錯誤，請再試一次。");
+                }
+            };
 
             const addTopAxis = (container) => {
                 if (!container) {
@@ -429,11 +442,40 @@ tickInterval ${zoom === "week" ? "1week" : "1month"}`;
                                 </button>
                             </div>
                         </div>
+                        <div class="flex flex-col gap-2 mb-4">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <label class="text-xs font-semibold text-slate-600" for="gantt-password">
+                                    編輯密碼
+                                </label>
+                                <input
+                                    id="gantt-password"
+                                    type="password"
+                                    value={passwordInput}
+                                    onChange={(event) => setPasswordInput(event.target.value)}
+                                    class="w-full sm:w-56 rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                                    placeholder="輸入密碼以開啟編輯"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={handleUnlock}
+                                    class="inline-flex items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-600 hover:border-blue-300 hover:text-blue-600 transition"
+                                >
+                                    {isUnlocked ? "已解鎖" : "解鎖編輯"}
+                                </button>
+                            </div>
+                            {!isUnlocked && (
+                                <p class="text-xs text-slate-500">輸入密碼後才可編輯下方內容。</p>
+                            )}
+                            {passwordError && (
+                                <p class="text-xs text-red-500">{passwordError}</p>
+                            )}
+                        </div>
                         <textarea
-                            class="w-full min-h-[420px] border border-slate-200 rounded-xl p-4 text-xs font-mono text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-200"
+                            class={`w-full min-h-[420px] border border-slate-200 rounded-xl p-4 text-xs font-mono text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-200 ${!isUnlocked ? "bg-slate-100 text-slate-400 cursor-not-allowed" : ""}`}
                             value={bodyText}
                             onChange={(event) => setBodyText(event.target.value)}
                             spellCheck="false"
+                            disabled={!isUnlocked}
                         />
                         <div class="mt-4 text-xs text-slate-500 space-y-2">
                             <p>格式範例：<code class="bg-slate-100 px-1 rounded">任務名稱 :id, 2026-01-06, 9d</code></p>
