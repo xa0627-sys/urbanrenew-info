@@ -649,7 +649,7 @@
                             })}
                         </div>
                     </div>
-                    {hasViewer && (
+                    {hasViewer && currentItem && (
                         <div class="fixed inset-0 z-50 bg-slate-900/80 flex items-center justify-center px-4">
                             <div class="absolute inset-0" onClick={closeViewer}></div>
                             <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col overflow-hidden">
@@ -688,15 +688,18 @@
                                     onMouseUp={handleMouseUp}
                                     onMouseLeave={handleMouseUp}
                                 >
-                                    <img
-                                        src={currentItem.image}
-                                        alt={`${currentItem.planTitle} ${currentItem.label}`}
-                                        class="absolute top-1/2 left-1/2 max-w-none select-none cursor-grab"
-                                        style={{
-                                            transform: `translate(calc(-50% + ${offset.x}px), calc(-50% + ${offset.y}px)) scale(${zoom})`,
-                                        }}
-                                        draggable="false"
-                                    />
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <img
+                                            src={currentItem.image}
+                                            alt={`${currentItem.planTitle} ${currentItem.label}`}
+                                            class={`max-w-full max-h-full select-none ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                                            style={{
+                                                transform: `translate(${offset.x}px, ${offset.y}px) scale(${zoom})`,
+                                                transformOrigin: 'center',
+                                            }}
+                                            draggable="false"
+                                        />
+                                    </div>
                                     <div class="absolute bottom-4 right-4 text-xs text-slate-500 bg-white/80 px-3 py-1 rounded-full shadow">
                                         滑鼠滾輪縮放，拖曳移動
                                     </div>
