@@ -488,9 +488,36 @@
         // 主題 3 (原主題 2)：平面圖說參考
         const FloorPlans = () => {
             const plans = [
-                { title: "全區配置圖", desc: "Site Plan", icon: "map" },
-                { title: "標準層平面", desc: "Floor Plan", icon: "layout" },
-                { title: "停車空間", desc: "Parking", icon: "car" },
+                { 
+                    title: "全區配置圖",
+                    desc: "Site Plan",
+                    icon: "map",
+                    items: [
+                        { label: "0-info", image: `${IMG_BASE_URL}floorplan-0-info.svg` },
+                        { label: "1F", image: `${IMG_BASE_URL}floorplan-1f.svg` },
+                    ],
+                },
+                {
+                    title: "標準層平面",
+                    desc: "Floor Plan",
+                    icon: "layout",
+                    items: [
+                        { label: "2-7F", image: `${IMG_BASE_URL}floorplan-2-7f.svg` },
+                        { label: "8-14F", image: `${IMG_BASE_URL}floorplan-8-14f.svg` },
+                    ],
+                },
+                {
+                    title: "停車空間",
+                    desc: "Parking",
+                    icon: "car",
+                    items: [
+                        { label: "B1F", image: `${IMG_BASE_URL}parking-b1f.svg` },
+                        { label: "B2F", image: `${IMG_BASE_URL}parking-b2f.svg` },
+                        { label: "B3F", image: `${IMG_BASE_URL}parking-b3f.svg` },
+                        { label: "B4F", image: `${IMG_BASE_URL}parking-b4f.svg` },
+                        { label: "B5F", image: `${IMG_BASE_URL}parking-b5f.svg` },
+                    ],
+                },
             ];
 
             return (
@@ -503,24 +530,56 @@
                         </div>
 
                         <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                            {plans.map((plan, idx) => (
+                            {plans.map((plan, idx) => {
+                                const primaryImage = plan.items.find((item) => item.image)?.image;
+                                return (
                                 <div key={idx} class="bg-slate-50 rounded-xl shadow-sm border border-slate-200 overflow-hidden group hover:shadow-lg transition-all">
                                     <div class="h-40 bg-slate-100 flex items-center justify-center relative overflow-hidden">
                                         <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity"></div>
-                                        <Icon name={plan.icon} size={48} className="text-slate-300 group-hover:text-blue-500 transition-colors transform group-hover:scale-110 duration-500" />
-                                        <div class="absolute top-3 right-3 px-2 py-1 bg-slate-200 text-slate-500 text-xs rounded font-medium">
-                                            規劃中
-                                        </div>
+                                        {primaryImage ? (
+                                            <img
+                                                src={primaryImage}
+                                                alt={`${plan.title} 圖片`}
+                                                class="w-full h-full object-cover"
+                                            />
+                                        ) : (
+                                            <>
+                                                <Icon name={plan.icon} size={48} className="text-slate-300 group-hover:text-blue-500 transition-colors transform group-hover:scale-110 duration-500" />
+                                                <div class="absolute top-3 right-3 px-2 py-1 bg-slate-200 text-slate-500 text-xs rounded font-medium">
+                                                    規劃中
+                                                </div>
+                                            </>
+                                        )}
                                     </div>
                                     <div class="p-6 text-center">
                                         <h3 class="font-bold text-lg text-slate-800">{plan.title}</h3>
                                         <p class="text-slate-400 text-xs uppercase tracking-wider mb-4">{plan.desc}</p>
-                                        <button class="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-400 rounded-lg text-sm font-medium cursor-not-allowed hover:bg-white transition-colors flex items-center justify-center gap-2">
-                                            <Icon name="lock" size={14} /> 圖面建置中
-                                        </button>
+                                        <div class="grid grid-cols-2 gap-3 text-sm">
+                                            {plan.items.map((item, itemIndex) => (
+                                                item.image ? (
+                                                    <a
+                                                        key={itemIndex}
+                                                        href={item.image}
+                                                        target="_blank"
+                                                        rel="noreferrer"
+                                                        class="w-full py-2.5 border-2 border-blue-600 text-blue-600 rounded-lg font-medium hover:bg-blue-50 transition-colors flex items-center justify-center gap-2"
+                                                    >
+                                                        <Icon name="image" size={14} /> {item.label}
+                                                    </a>
+                                                ) : (
+                                                    <button
+                                                        key={itemIndex}
+                                                        class="w-full py-2.5 border-2 border-dashed border-slate-300 text-slate-400 rounded-lg font-medium cursor-not-allowed hover:bg-white transition-colors flex items-center justify-center gap-2"
+                                                    >
+                                                        <Icon name="lock" size={14} /> {item.label}
+                                                    </button>
+                                                )
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            ))}
+                                );
+                            })}
                         </div>
                     </div>
                 </section>
