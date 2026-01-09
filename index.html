@@ -219,20 +219,34 @@
                                         進度更新採用甘特圖來源，並支援行動裝置瀏覽。
                                     </p>
                                 </div>
-                                <div class="relative w-full rounded-2xl border border-gray-100 shadow-inner bg-slate-50">
+                                <div class="relative w-full rounded-2xl border border-gray-100 shadow-inner bg-slate-50 hidden sm:block">
                                     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/70 pointer-events-none"></div>
-                                    <div class="overflow-x-auto">
-                                        <iframe
-                                            title="都市更新專案甘特圖"
-                                            src="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
-                                            class="block w-[960px] sm:w-full h-[520px] sm:h-[600px] lg:h-[680px]"
-                                            loading="lazy"
-                                        ></iframe>
-                                    </div>
+                                    <iframe
+                                        title="都市更新專案甘特圖"
+                                        src="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
+                                        class="w-full h-[520px] sm:h-[600px] lg:h-[680px]"
+                                        loading="lazy"
+                                    ></iframe>
                                 </div>
-                                <div class="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
+                                <div class="sm:hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center">
+                                    <div class="flex flex-col items-center gap-3 text-slate-600">
+                                        <Icon name="maximize-2" size={28} className="text-slate-500" />
+                                        <p class="text-sm">
+                                            手機版為了閱讀清楚，甘特圖改為另開頁面顯示。
+                                        </p>
+                                    </div>
+                                    <a
+                                        href="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        class="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-slate-800 px-4 py-2 text-white text-xs font-semibold shadow hover:bg-slate-700 transition"
+                                    >
+                                        <Icon name="external-link" size={14} /> 開啟完整甘特圖
+                                    </a>
+                                </div>
+                                <div class="mt-4 hidden sm:flex sm:items-center sm:justify-between gap-3 text-sm">
                                     <span class="text-gray-500">
-                                        手機可左右滑動查看時間軸。若圖表無法顯示，請使用下方連結查看完整版本。
+                                        若圖表無法顯示，請使用右側連結查看完整版本。
                                     </span>
                                     <a
                                         href="https://xa0627-sys.github.io/urbanrenewal_PCM/gantt-full.html"
